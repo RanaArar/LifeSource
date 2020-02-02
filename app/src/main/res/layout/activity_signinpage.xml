@@ -8,7 +8,7 @@
     tools:context=".signinpage">
 
 
-   <!-- <Button
+    <!-- <Button
         android:layout_width="40dp"
         android:layout_height="14dp"
         android:layout_marginStart="16dp"
@@ -26,85 +26,63 @@
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="253dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="316dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginRight="34dp"
-        android:background="@drawable/emailver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:hint="Enter your e-mail"
         app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:layout_constraintStart_toStartOf="@+id/editText" />
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="253dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginLeft="124dp"
-        android:layout_marginTop="439dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginRight="34dp"
-        android:background="@drawable/passver"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="168dp"
+        android:hint="Enter password"
+        app:layout_constraintBottom_toTopOf="@+id/sign_donor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="89dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="336dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="E-mail"
         android:textColor="#A22F48"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
-        app:layout_constraintHorizontal_bias="0.314"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintEnd_toEndOf="@+id/editText2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editText2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.963" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="113dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginLeft="11dp"
-        android:layout_marginTop="450dp"
-        android:layout_marginBottom="260dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
         android:text="Password"
         android:textColor="#A22F48"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editText" />
 
     <Button
         android:id="@+id/sign_donor"
-        android:layout_width="185dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="113dp"
-        android:layout_marginLeft="113dp"
-        android:layout_marginTop="567dp"
-        android:layout_marginEnd="113dp"
-        android:layout_marginRight="113dp"
+        android:layout_width="157dp"
+        android:layout_height="78dp"
+        android:layout_marginBottom="116dp"
         android:background="@drawable/signinbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.052" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

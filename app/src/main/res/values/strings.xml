@@ -4,4 +4,17 @@
     <string name="mobile_number">mobile number</string>
     <string name="e_mail">E-mail</string>
     <string name="change_password">Change password</string>
+    <string-array name="bloodGrouo">
+
+<item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+    </string-array>
+
+
 </resources>

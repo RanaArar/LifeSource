@@ -7,7 +7,7 @@
     android:background="@drawable/adminpage"
     tools:context=".adminpage">
 
-<!--
+    <!--
     <Button
         android:layout_width="40dp"
         android:layout_height="14dp"
@@ -27,58 +27,37 @@
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="117dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="208dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="E-mail"
         android:textColor="#A22F48"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/email_admin"
-        app:layout_constraintHorizontal_bias="0.602"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:layout_width="117dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="112dp"
-        android:text="Password"
-        android:textColor="#A22F48"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/pass_admin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <EditText
-        android:id="@+id/email_admin"
-        android:layout_width="200dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="196dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/email_admin"
+        app:layout_constraintEnd_toEndOf="@+id/email_admin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/email_admin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.923" />
 
     <EditText
         android:id="@+id/pass_admin"
         android:layout_width="200dp"
         android:layout_height="51dp"
-        android:layout_marginTop="100dp"
-
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/pass"
+        android:layout_marginBottom="264dp"
+        android:hint="Enter your password"
+        app:layout_constraintBottom_toTopOf="@+id/sign_adimn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_admin" />
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.908" />
 
     <Button
         android:id="@+id/sign_adimn"
-        android:layout_width="185dp"
-        android:layout_height="68dp"
-        android:layout_marginBottom="140dp"
+        android:layout_width="175dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="148dp"
         android:background="@drawable/signinbutton"
         android:textColor="#FBF9F9"
         android:textSize="27sp"
@@ -86,4 +65,32 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/email_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter your e-mail"
+        app:layout_constraintBottom_toTopOf="@+id/pass_admin"
+        app:layout_constraintEnd_toEndOf="@+id/pass_admin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pass_admin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.734" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textColor="#A22F48"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/pass_admin"
+        app:layout_constraintEnd_toEndOf="@+id/pass_admin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pass_admin"
+        app:layout_constraintTop_toBottomOf="@+id/email_admin"
+        app:layout_constraintVertical_bias="0.225" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
