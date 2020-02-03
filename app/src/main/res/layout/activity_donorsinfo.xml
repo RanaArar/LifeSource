@@ -1,39 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   android:background="@drawable/donorsinfo"
+    android:orientation="vertical"
+   android:background="@drawable/background"
     tools:context=".Donorsinfo">
 
-    <Button
-        android:layout_width="40dp"
-        android:layout_height="14dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="355dp"
-        android:layout_marginRight="355dp"
-        android:background="@drawable/arrow"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        tools:ignore="UnknownIdInLayout" />
+
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Name"
         android:textColor="#A22F48"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="81dp" />
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,49 +29,64 @@
         android:textColor="#000000"
         android:textSize="15sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="123dp" />
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+ />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Age"
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:textColor="#A22F48"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="157dp" />
+  />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="27"
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:textColor="#000000"
         android:textSize="15sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="205dp" />
+ />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Weight "
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:textColor="#A22F48"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="238dp" />
+/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="78"
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:textColor="#000000"
         android:textSize="15sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="276dp" />
+/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -92,15 +95,21 @@
         android:textColor="#A22F48"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="310dp" />
 
-    <TextView
-        android:layout_width="44dp"
-        android:layout_height="71dp"
-        android:background="@drawable/male11"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="356dp" />
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+    />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/male"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+      />
 
     <TextView
         android:layout_width="wrap_content"
@@ -108,9 +117,12 @@
         android:text="Do You Have Any Infectious Diseases? "
         android:textColor="#A22F48"
         android:textSize="20sp"
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="449dp" />
+ />
 
     <TextView
         android:layout_width="wrap_content"
@@ -119,8 +131,10 @@
         android:textColor="#000000"
         android:textSize="15sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="495dp" />
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -129,6 +143,10 @@
         android:textColor="#A22F48"
         android:textSize="20sp"
         android:textStyle="bold"
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="527dp" />
 
@@ -136,8 +154,10 @@
         android:layout_width="42dp"
         android:layout_height="41dp"
         android:background="@drawable/bloodbplus"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="573dp" />
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"/>
 
 
     <TextView
@@ -147,8 +167,10 @@
         android:textColor="#A22F48"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="630dp" />
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -157,8 +179,10 @@
         android:textColor="#000000"
         android:textSize="15sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="671dp" />
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -167,8 +191,10 @@
         android:textColor="#A22F48"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="708dp" />
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -177,16 +203,21 @@
         android:textColor="#000000"
         android:textSize="15sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="749dp" />
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp" />
 
 
-    <Button
-        android:layout_width="130dp"
-        android:layout_height="36dp"
-        android:background="@drawable/callbutton"
-        tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="794dp" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/callbutton"
+        android:background="@android:color/transparent"
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

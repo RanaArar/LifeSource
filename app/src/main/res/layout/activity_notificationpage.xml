@@ -7,22 +7,6 @@
     android:background="@drawable/notification"
     tools:context=".Notificationpage">
 
-    <Button
-        android:layout_width="40dp"
-        android:layout_height="14dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="355dp"
-        android:layout_marginRight="355dp"
-        android:background="@drawable/arrow"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08" />
 
     <TextView
         android:layout_width="329dp"

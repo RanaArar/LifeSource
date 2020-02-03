@@ -1,37 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/newdonor10"
+    android:orientation="vertical"
+
+    android:background="@drawable/background"
     tools:context=".newdonor">
 
-    <Button
-        android:layout_width="40dp"
-        android:layout_height="14dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="355dp"
-        android:layout_marginRight="355dp"
-        android:background="@drawable/arrow"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08" />
-
-
-    <Button
-        android:id="@+id/submit_donor"
-        android:layout_width="137dp"
-        android:layout_height="51dp"
-        android:background="@drawable/submitbut"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="791dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,15 +17,14 @@
         android:textColor="#A22F48"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="96dp" />
+        android:layout_margin="5dp"
+       />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="First name, Family name"
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="127dp" />
+        android:layout_margin="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,22 +33,13 @@
         android:textColor="#A22F48"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="180dp" />
+        android:layout_margin="5dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="must be between 18-65"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="214dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint=" must be greater than 50"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="310dp" />
+        android:layout_margin="5dp"  />
 
     <TextView
         android:layout_width="wrap_content"
@@ -81,8 +48,14 @@
         android:textColor="#A22F48"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="273dp" />
+        android:layout_margin="5dp"  />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint=" must be greater than 50"
+        android:layout_margin="5dp"
+        />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -92,24 +65,21 @@
         android:textSize="20sp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="372dp" />
+        android:layout_margin="5dp"  />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Male"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="426dp" />
+        android:layout_margin="5dp" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Female"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="107dp"
-        tools:layout_editor_absoluteY="426dp" />
+        android:layout_margin="5dp"  />
 
     <TextView
         android:layout_width="wrap_content"
@@ -118,32 +88,21 @@
         android:textColor="#A22F48"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="479dp" />
+        android:layout_margin="5dp"  />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="107dp"
-        tools:layout_editor_absoluteY="529dp" />
+        android:layout_margin="5dp"  />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Yes"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="529dp" />
-
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        tools:layout_editor_absoluteX="198dp"
-        tools:layout_editor_absoluteY="592dp" />
-
+        android:layout_margin="5dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -151,28 +110,40 @@
         android:textColor="#A22F48"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="592dp" />
+        android:layout_margin="5dp"  />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        android:layout_margin="5dp" />
+
+
 
 
     <EditText
         android:layout_width="193dp"
         android:layout_height="42dp"
         android:hint="Mobile number"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="684dp" />
+        android:layout_margin="5dp"  />
 
     <EditText
         android:layout_width="193dp"
         android:layout_height="42dp"
         android:hint="E-mail"
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="634dp" />
+        android:layout_margin="5dp"  />
 
     <EditText
         android:layout_width="193dp"
         android:layout_height="42dp"
         android:hint="Password"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="734dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_margin="5dp"  />
+
+    <Button
+        android:id="@+id/submit_donor"
+        android:layout_width="137dp"
+        android:layout_height="51dp"
+        android:background="@drawable/submitbut"
+        android:layout_margin="5dp"
+    />
+
+</LinearLayout>
