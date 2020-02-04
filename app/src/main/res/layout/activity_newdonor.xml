@@ -12,7 +12,17 @@
     android:background="@drawable/background"
     tools:context=".newdonor">
 
+    <include
+        layout="@layout/custom_tool_bar"/>
 
+    <ProgressBar
+        android:id="@+id/new_donor_progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:indeterminate="true"
+        android:visibility="invisible" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:inputType="text"
         android:hint="First name, Family name" />
 
     <TextView
@@ -44,6 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:inputType="number"
         android:hint="must be between 18-65" />
 
     <TextView
@@ -60,7 +72,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:hint=" must be greater than 50" />
+        android:inputType="number"
+        android:hint=" must be greater than 50 Kg" />
 
 
     <TextView
@@ -72,7 +85,10 @@
         android:textStyle="bold"
         tools:ignore="MissingConstraints"
         android:layout_margin="5dp"  />
-
+<RadioGroup
+    android:id="@+id/register_gender"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <RadioButton
         android:id="@+id/register_male"
         android:layout_width="wrap_content"
@@ -88,7 +104,7 @@
         android:layout_margin="5dp"
         android:text="Female"
         android:textStyle="bold" />
-
+</RadioGroup>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -97,7 +113,10 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_margin="5dp"  />
-
+    <RadioGroup
+        android:id="@+id/register_disease"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <RadioButton
         android:id="@+id/register_no"
         android:layout_width="wrap_content"
@@ -113,6 +132,7 @@
         android:layout_margin="5dp"
         android:text="Yes"
         android:textStyle="bold" />
+    </RadioGroup>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -135,6 +155,7 @@
         android:id="@+id/register_phone"
         android:layout_width="193dp"
         android:layout_height="42dp"
+        android:inputType="number"
         android:layout_margin="5dp"
         android:hint="Mobile number" />
 
@@ -143,15 +164,13 @@
         android:layout_width="193dp"
         android:layout_height="42dp"
         android:layout_margin="5dp"
+        android:inputType="textEmailAddress"
         android:hint="E-mail" />
 
-    <EditText
-        android:id="@+id/register_password"
-        android:layout_width="193dp"
-        android:layout_height="42dp"
-        android:layout_margin="5dp"
-        android:hint="Password" />
 
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
     <Button
         android:id="@+id/submit_donor"
         android:layout_width="137dp"
@@ -159,6 +178,14 @@
         android:background="@drawable/submitbut"
         android:layout_margin="5dp"
     />
-
+    <Button
+        android:id="@+id/logout_donor"
+        android:layout_width="137dp"
+        android:layout_height="51dp"
+        android:background="@drawable/button"
+        android:text="Log out"
+        android:layout_margin="5dp"
+        />
+</LinearLayout>
 </LinearLayout>
 </ScrollView>
