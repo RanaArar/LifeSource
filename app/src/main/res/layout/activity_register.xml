@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:orientation="vertical"
-    tools:context=".signinpage">
-<include
-    layout="@layout/custom_tool_bar"/>
+    android:orientation="vertical">
+
+
+    <include layout="@layout/custom_tool_bar" />
+
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="fill"
         android:src="@drawable/signin_card" />
+
     <ProgressBar
-        android:id="@+id/signin_progressBar"
+        android:id="@+id/register_progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:indeterminate="true"
         android:visibility="invisible" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -37,7 +42,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/signin_email"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -59,7 +64,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/signin_pass"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -68,15 +73,37 @@
         android:hint="Enter password"
         android:inputType="textPassword" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp"
+        android:text="Confirm Password"
+        android:textColor="#A22F48"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/confirm_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp"
+        android:hint="Enter password"
+
+        android:inputType="textPassword" />
+
 
     <Button
-        android:id="@+id/sign_donor"
+        android:id="@+id/register_donor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/signinbutton" />
-
 
 </LinearLayout>

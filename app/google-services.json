@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "688132416310",
+    "firebase_url": "https://lifesource-18f48.firebaseio.com",
+    "project_id": "lifesource-18f48",
+    "storage_bucket": "lifesource-18f48.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688132416310:android:d39763f83fd7d0ec3f0997",
+        "android_client_info": {
+          "package_name": "com.example.myapplicationlifesource"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688132416310-b12kved6n79dd8sdb7um2sp1mgm6ra21.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplicationlifesource",
+            "certificate_hash": "be429b8a351349bb9df7999396c21f81aada34a9"
+          }
+        },
+        {
+          "client_id": "688132416310-ph6t9b46h8f31ms8iijaaabl4c4ug36s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdACFrvIMFHKqmFiHVm6XJSIwuXmriHPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688132416310-ph6t9b46h8f31ms8iijaaabl4c4ug36s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -21,10 +24,11 @@
        />
 
     <EditText
+        android:id="@+id/register_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="First name, Family name"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:hint="First name, Family name" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,10 +40,11 @@
         android:layout_margin="5dp" />
 
     <EditText
+        android:id="@+id/register_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="must be between 18-65"
-        android:layout_margin="5dp"  />
+        android:layout_margin="5dp"
+        android:hint="must be between 18-65" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,12 +54,13 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_margin="5dp"  />
+
     <EditText
+        android:id="@+id/register_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint=" must be greater than 50"
         android:layout_margin="5dp"
-        />
+        android:hint=" must be greater than 50" />
 
 
     <TextView
@@ -68,18 +74,20 @@
         android:layout_margin="5dp"  />
 
     <RadioButton
+        android:id="@+id/register_male"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:text="Male"
-        android:textStyle="bold"
-        android:layout_margin="5dp" />
+        android:textStyle="bold" />
 
     <RadioButton
+        android:id="@+id/register_female"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:text="Female"
-        android:textStyle="bold"
-        android:layout_margin="5dp"  />
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,18 +99,20 @@
         android:layout_margin="5dp"  />
 
     <RadioButton
+        android:id="@+id/register_no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:text="No"
-        android:textStyle="bold"
-        android:layout_margin="5dp"  />
+        android:textStyle="bold" />
 
     <RadioButton
+        android:id="@+id/register_yes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:text="Yes"
-        android:textStyle="bold"
-        android:layout_margin="5dp" />
+        android:textStyle="bold" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -111,32 +121,36 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_margin="5dp"  />
+
     <Spinner
+        android:id="@+id/register_bloodtype"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        android:layout_margin="5dp" />
 
-
+        android:layout_margin="5dp"
+        android:spinnerMode="dropdown" />
 
 
     <EditText
+        android:id="@+id/register_phone"
         android:layout_width="193dp"
         android:layout_height="42dp"
-        android:hint="Mobile number"
-        android:layout_margin="5dp"  />
+        android:layout_margin="5dp"
+        android:hint="Mobile number" />
 
     <EditText
+        android:id="@+id/register_email"
         android:layout_width="193dp"
         android:layout_height="42dp"
-        android:hint="E-mail"
-        android:layout_margin="5dp"  />
+        android:layout_margin="5dp"
+        android:hint="E-mail" />
 
     <EditText
+        android:id="@+id/register_password"
         android:layout_width="193dp"
         android:layout_height="42dp"
-        android:hint="Password"
-        android:layout_margin="5dp"  />
+        android:layout_margin="5dp"
+        android:hint="Password" />
 
     <Button
         android:id="@+id/submit_donor"
@@ -147,3 +161,4 @@
     />
 
 </LinearLayout>
+</ScrollView>

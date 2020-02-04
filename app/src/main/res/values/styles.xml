@@ -4,8 +4,13 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorPrimaryDark">#6E3836</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Toolbar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title" >
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+
+    </style>
 </resources>

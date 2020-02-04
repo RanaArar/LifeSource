@@ -2,12 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplicationlifesource">
 
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality.
-    -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -16,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".RegisterActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -29,15 +24,20 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-
-        <activity android:name=".newdonor" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Donorsinfo"  />
+        <activity
+            android:name=".newdonor"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".Donorsinfo" />
         <activity android:name=".editprofile" />
         <activity android:name=".Notificationpage" />
         <activity android:name=".profilepage" />
-        <activity android:name=".signinpage" android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".signinpage"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".Donorslist" />
-        <activity android:name=".adminpage" android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".adminpage"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

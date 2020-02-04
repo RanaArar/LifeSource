@@ -6,7 +6,7 @@
     <string name="change_password">Change password</string>
     <string-array name="bloodGrouo">
 
-<item>A+</item>
+        <item>A+</item>
         <item>A-</item>
         <item>B+</item>
         <item>B-</item>

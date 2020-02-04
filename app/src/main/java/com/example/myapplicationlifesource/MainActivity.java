@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 break;
 
             case R.id.new_donor:
-                intent = new Intent(MainActivity.this,newdonor.class);
+                intent = new Intent(MainActivity.this,RegisterActivity.class);
 
                 break;
         }
