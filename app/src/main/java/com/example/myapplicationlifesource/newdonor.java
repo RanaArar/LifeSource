@@ -47,13 +47,14 @@ public class newdonor extends AppCompatActivity {
     private ProgressBar progressBar;
     private Toolbar toolbar;
     private TextView toolbarText;
-    char genderValue='F',diseaseValue='N';
+    String genderValue="F",diseaseValue="N";
 
     private RadioGroup gender , disease;
     private RadioButton selectedGender , selectedDisease;
     private int selectedGenderID,selectedDiseaseId;
     private static String selectedBloodType;
     final List<String> items= new ArrayList<String>();;
+    AlertDialog.Builder dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,7 +118,7 @@ public class newdonor extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                showDialog("You have to select a Blood Type");
+                dialog = showDialog("You have to select a Blood Type");
             }
         });
 
@@ -160,26 +161,25 @@ public class newdonor extends AppCompatActivity {
 
                 progressBar.setVisibility(View.VISIBLE);
                 storeData();
-                startActivity(new Intent(newdonor.this, profilepage.class));
             }
         });
     }
 
     private void retrieveValue() {
-        try{
+       /* try{*/
 
             name.setText( user.getName());
-            age.setText(user.getAge());
+            age.setText(String.valueOf(user.getAge()));
             weight.setText(String.valueOf(user.getWeight()));
             phone.setText(user.getPhone());
             email.setText(user.getEmail());
 
-            if(user.getGender()=='F')
+            if(user.getGender().equals("F"))
                 gender.check(R.id.register_female);
             else
                 gender.check(R.id.register_male);
 
-            if(user.getDiseases()=='Y')
+            if(user.getDiseases()=="Y")
                 disease.check(R.id.register_yes);
             else
                 disease.check(R.id.register_no);
@@ -190,10 +190,10 @@ public class newdonor extends AppCompatActivity {
                 else
                     bloodType.setSelection(0);
             }
-        }  catch (Exception e) {
-        Toast.makeText(newdonor.this, e.getMessage(), Toast.LENGTH_LONG).show();
+   /*     }  catch (Exception e) {
+        Toast.makeText(newdonor.this, e.getMessage(), Toast.LENGTH_LONG).show();*/
 
-    }
+    //}
     }
 
     private void storeData() {
@@ -203,19 +203,23 @@ public class newdonor extends AppCompatActivity {
         double weightValue = Double.valueOf(weight.getText().toString());
         if (ageValue > 65 || ageValue < 18) {
 
-            showDialog("Your age should be from 18-65");
+          dialog=   showDialog("Your age should be from 18-65");
 
 
         } else {
 
             takeData();
+            startActivity(new Intent(newdonor.this, profilepage.class));
+
         }
 
 
         if(weightValue < 50 ){
-            showDialog("Your weight should be more than 50 Kg");
+            dialog  = showDialog("Your weight should be more than 50 Kg");
         }else {
             takeData();
+            startActivity(new Intent(newdonor.this, profilepage.class));
+
         }
         databaseReference.child("Donor").child(userId).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -234,20 +238,20 @@ public class newdonor extends AppCompatActivity {
 
         switch (selectedGenderID){
             case R.id.register_male:
-                genderValue = 'M';
+                genderValue = "M";
                 break;
 
             case R.id.register_female:
-                genderValue = 'F';
+                genderValue = "F";
                 break;
         }
         switch (selectedDiseaseId){
             case R.id.register_yes:
-                diseaseValue = 'Y';
+                diseaseValue = "Y";
                 break;
 
             case R.id.register_no:
-                diseaseValue = 'N';
+                diseaseValue = "N";
                 break;
         }
 
@@ -261,17 +265,20 @@ public class newdonor extends AppCompatActivity {
         user.setBloodType(selectedBloodType);
     }
 
-    private void showDialog(String s) {
+    private AlertDialog.Builder showDialog(String s) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(newdonor.this);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+
+                retrieveValue();
             }
         })
                 .setMessage(s)
-                .setCancelable(false);
+                .setCancelable(true);
         builder.create();
         builder.show();
+        return  builder;
     }
 }

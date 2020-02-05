@@ -42,7 +42,7 @@
         tools:layout_editor_absoluteY="98dp" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/edit_info"
         android:layout_width="79dp"
         android:layout_height="79dp"
         android:background="@drawable/setting"

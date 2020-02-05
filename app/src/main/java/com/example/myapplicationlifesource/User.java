@@ -1,12 +1,11 @@
 package com.example.myapplicationlifesource;
 
 class User {
-    String name ,email,phone,bloodType;
+    String name ,email,phone,bloodType,gender, diseases;
 
    int age ;
     double weight;
-    char gender;
-    char diseases;
+
     public User() {
     }
 
@@ -42,6 +41,22 @@ class User {
         this.bloodType = bloodType;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDiseases() {
+        return diseases;
+    }
+
+    public void setDiseases(String diseases) {
+        this.diseases = diseases;
+    }
+
     public int getAge() {
         return age;
     }
@@ -56,21 +71,5 @@ class User {
 
     public void setWeight(double weight) {
         this.weight = weight;
-    }
-
-    public char getGender() {
-        return gender;
-    }
-
-    public void setGender(char gender) {
-        this.gender = gender;
-    }
-
-    public char getDiseases() {
-        return diseases;
-    }
-
-    public void setDiseases(char diseases) {
-        this.diseases = diseases;
     }
 }
