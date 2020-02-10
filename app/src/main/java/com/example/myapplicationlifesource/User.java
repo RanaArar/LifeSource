@@ -1,10 +1,29 @@
 package com.example.myapplicationlifesource;
 
-class User {
-    String name ,email,phone,bloodType,gender, diseases;
+import java.util.Date;
 
+class User {
+    String name, email, phone, bloodType, gender, diseases, hospital;
+
+    Date appointment;
    int age ;
     double weight;
+
+    public String getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(String hospital) {
+        this.hospital = hospital;
+    }
+
+    public Date getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(Date appointment) {
+        this.appointment = appointment;
+    }
 
     public User() {
     }
