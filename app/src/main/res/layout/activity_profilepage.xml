@@ -26,8 +26,9 @@
 
         <TextView
             android:id="@+id/user_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_margin="8dp"
             android:text="Donor Name"
             android:textColor="#000000"
@@ -59,6 +60,7 @@
             android:background="@drawable/notificon"
             tools:layout_editor_absoluteX="194dp"
             tools:layout_editor_absoluteY="93dp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -101,10 +103,11 @@
                 android:layout_weight="1"
                 android:textSize="18sp"
 
+
                 android:drawableLeft="@drawable/grohos1"
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical"
-                android:text="Al-Hashimi Hospital"
+                android:text="United Doctors Hospital"
                 android:textStyle="bold" />
 
             <ImageView
@@ -126,12 +129,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:textSize="18sp"
+                android:textSize="16sp"
 
                 android:drawableLeft="@drawable/grohos1"
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical"
-                android:text="Al-Amal Hospital"
+                android:text="International Medical Center"
                 android:textStyle="bold" />
 
             <ImageView
@@ -153,11 +156,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:drawableLeft="@drawable/grohos1"
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical"
-                android:text="Al-Nabd Hospital"
+                android:text="King Fahad General Hospital"
                 android:textStyle="bold" />
 
             <ImageView
@@ -190,7 +193,7 @@
     <LinearLayout
         android:id="@+id/donate_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_above="@+id/logout_donor1"
         android:layout_below="@id/donate_now"
         android:layout_alignParentStart="true"
@@ -204,16 +207,20 @@
         <ImageView
             android:id="@+id/calender"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:src="@drawable/appoicon" />
 
         <Button
             android:id="@+id/get_appointment"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="2dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@drawable/get" />
+            android:text="Get an Appointment"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:background="#D7E1F2" />
     </LinearLayout>
 
     <Button
@@ -235,25 +242,5 @@
         android:background="@drawable/button"
         android:text="Log out"
         android:textColor="@color/colorAccent" />
-    <!-- <com.google.android.material.bottomnavigation.BottomNavigationView
-
-         android:id="@+id/bottom_navigation"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_alignParentStart="true"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentBottom="true"
-         android:layout_gravity="bottom"
-         android:layout_marginStart="20dp"
-         android:layout_marginLeft="20dp"
-         android:layout_marginTop="20dp"
-         android:layout_marginBottom="5dp"
-         android:background="#E6D2CE"
-         android:fitsSystemWindows="true"
-         app:itemIconTint="@drawable/bottom_nav_colors"
-         app:itemTextColor="@drawable/bottom_nav_colors"
-         app:labelVisibilityMode="labeled"
-         app:menu="@menu/menu" />
- -->
 
 </RelativeLayout>

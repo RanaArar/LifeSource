@@ -6,7 +6,17 @@ class User {
     String name, email, phone, bloodType, gender, diseases, hospital;
 
     Date appointment;
-   int age ;
+    int age;
+
+    public int getDonateTime() {
+        return donateTime;
+    }
+
+    public void setDonateTime(int donateTime) {
+        this.donateTime = donateTime;
+    }
+
+    int donateTime;
     double weight;
 
     public String getHospital() {

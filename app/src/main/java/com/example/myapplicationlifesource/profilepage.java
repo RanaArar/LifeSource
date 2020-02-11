@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,10 +28,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.Locale;
 
 public class profilepage extends AppCompatActivity implements View.OnClickListener {
-    private BottomNavigationView bottomNavigationView;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
     private FirebaseDatabase database;
@@ -38,16 +42,17 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
             getAppointment, logout;
 
     private static String sentToEmail;
-    private ImageView calnder, doning,
+    private ImageView doning,
             amalLocation, nabdLocation, hashimiLocation;
     private TextView name, amalHospital, nabdHospital, hashimiHosiptal;
 
+    private LinearLayout calnder;
+    private int count = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profilepage);
         //---------------------------------------------
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
         editInfo = findViewById(R.id.edit_info);
         notification = findViewById(R.id.user_notification);
         amalHospital = findViewById(R.id.amal_hospital);
@@ -55,7 +60,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         hashimiHosiptal = findViewById(R.id.hashimi_hospital);
         doning = findViewById(R.id.donoing);
         getAppointment = findViewById(R.id.get_appointment);
-        calnder = findViewById(R.id.calender);
+        calnder = findViewById(R.id.donate_layout);
         name = findViewById(R.id.user_name);
         logout = findViewById(R.id.logout_donor1);
         amalLocation = findViewById(R.id.amal_location);
@@ -63,13 +68,12 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         hashimiLocation = findViewById(R.id.hashmi_location);
         ///---------------database----------------------------
         user = new User();
+        mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("User");
         final FirebaseUser userKey = mAuth.getCurrentUser();
         userId = userKey.getUid();
-        //------------------bottom navigation-----------------------
-        //  bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
-        mAuth = FirebaseAuth.getInstance();
+
         //-------------------------Listeners---------------------------------------
         editInfo.setOnClickListener(this);
         calnder.setOnClickListener(this);
@@ -79,6 +83,10 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         amalLocation.setOnClickListener(this);
         nabdLocation.setOnClickListener(this);
         hashimiLocation.setOnClickListener(this);
+        doning.setOnClickListener(this);
+        hashimiHosiptal.setOnClickListener(this);
+        amalHospital.setOnClickListener(this);
+        nabdHospital.setOnClickListener(this);
         //------------------------retrieve user name-------------------------
 
         databaseReference.child("Donor").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -105,85 +113,59 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
 
     }
 
-/*
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            //      Fragment selectedFragment = null;
 
-            switch (menuItem.getItemId()) {
-                case R.id.logout:
-                    mAuth.signOut();
-
-                    Intent intent = new Intent(profilepage.this, signinpage.class);
-                    startActivity(intent);
-                    //  selectedFragment = new AzkarFragment();
-                    break;
-                case R.id.map:
-                    //   selectedFragment = new FavoriteFragment();
-                    break;
-
-                case R.id.home:
-                    //   selectedFragment = new MasbahaFragment();
-                    break;
-            }
-*/
-/*
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    selectedFragment).commit();*//*
-
-            return true;
-        }
-    };
-*/
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.donoing:
+                Toast.makeText(this, "Number of donation:" + count, Toast.LENGTH_SHORT).show();
+                break;
             case R.id.edit_info:
                 startActivity(new Intent(profilepage.this, newdonor.class));
                 break;
             case R.id.user_notification:
                 startActivity(new Intent(profilepage.this, Notificationpage.class));
                 break;
-            case R.id.get_appointment:
+            case R.id.donate_layout:
                 chooseDate();
                 break;
             case R.id.amal_hospital:
-                selectedHospital(amalHospital);
+                selectedHospital(amalHospital, nabdHospital, hashimiHosiptal);
                 break;
             case R.id.nabd_hospital:
-                selectedHospital(nabdHospital);
+                selectedHospital(nabdHospital, amalHospital, hashimiHosiptal);
                 break;
             case R.id.hashimi_hospital:
-                selectedHospital(hashimiHosiptal);
+                selectedHospital(hashimiHosiptal, amalHospital, nabdHospital);
                 break;
-            case R.id.logout:
+            case R.id.logout_donor1:
                 mAuth.signOut();
-
                 Intent intent = new Intent(profilepage.this, signinpage.class);
                 startActivity(intent);
                 break;
             case R.id.amal_location:
-                sendToLocation(amalLocation, 12, 12);
+                sendToLocation(21.513575, 39.174125);
                 break;
             case R.id.nabd_location:
-                sendToLocation(nabdLocation, 12, 12);
+                sendToLocation(21.543346, 39.166610);
                 break;
             case R.id.hashmi_location:
-                sendToLocation(hashimiLocation, 12, 12);
+                sendToLocation(21.505549, 39.166208);
                 break;
         }
     }
 
-    private void sendToLocation(ImageView amalLocation, int lat, int lag) {
-        String uri = String.format(Locale.ENGLISH, "geo:%f,%f", lat, lag);
+    private void sendToLocation(double lat, double lag) {
+        String uri = String.format(Locale.ENGLISH, "geo:%f,%f?z=21", lat, lag);
 
         Uri location = Uri.parse(uri);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
         mapIntent.setPackage("com.google.android.apps.maps");
         if (mapIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(mapIntent);
+        } else {
+            Toast.makeText(this, "Install Google Map to View Maps", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -192,7 +174,9 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
 
     }
 
-    private void selectedHospital(TextView t) {
+    private void selectedHospital(TextView t, TextView otherText, TextView otherText1) {
+        otherText.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        otherText1.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         t.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         final String selectedHospital = t.getText().toString();
         user.setHospital(selectedHospital);

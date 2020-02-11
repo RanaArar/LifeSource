@@ -5,14 +5,17 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -29,6 +32,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +59,7 @@ public class newdonor extends AppCompatActivity {
     private int selectedGenderID,selectedDiseaseId;
     private static String selectedBloodType;
     final List<String> items= new ArrayList<String>();;
-    AlertDialog.Builder dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,7 +123,7 @@ public class newdonor extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                dialog = showDialog("You have to select a Blood Type");
+                showDialog("You have to select a Blood Type");
             }
         });
 
@@ -199,39 +204,24 @@ public class newdonor extends AppCompatActivity {
     private void storeData() {
 
 
-        int ageValue = Integer.valueOf(age.getText().toString());
-        double weightValue = Double.valueOf(weight.getText().toString());
-        if (ageValue > 65 || ageValue < 18) {
+        if (!TextUtils.isEmpty(name.getText()) && !TextUtils.isEmpty(age.getText()) && !TextUtils.isEmpty(phone.getText()) && !TextUtils.isEmpty(email.getText())) {
+            int ageValue = Integer.valueOf(age.getText().toString());
+            double weightValue = Double.valueOf(weight.getText().toString());
+            if (ageValue > 65 || ageValue < 18) {
 
-          dialog=   showDialog("Your age should be from 18-65");
+                showDialog("Your age should be from 18-65");
 
+
+            } else if (weightValue < 50) {
+                showDialog("Your weight should be more than 50 Kg");
+            } else {
+                takeData();
+            }
 
         } else {
-
-            takeData();
-            startActivity(new Intent(newdonor.this, profilepage.class));
-
+            showDialog("Please fill your information");
         }
 
-
-        if(weightValue < 50 ){
-            dialog  = showDialog("Your weight should be more than 50 Kg");
-        }else {
-            takeData();
-            startActivity(new Intent(newdonor.this, profilepage.class));
-
-        }
-        databaseReference.child("Donor").child(userId).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(newdonor.this, "تم حفظ المعلومات ", Toast.LENGTH_LONG).show();
-
-                } else {
-                    Toast.makeText(newdonor.this, "فشل في حفظ المعلومات ", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
     }
 
     private void takeData() {
@@ -263,22 +253,37 @@ public class newdonor extends AppCompatActivity {
         user.setGender(genderValue);
         user.setDiseases(diseaseValue);
         user.setBloodType(selectedBloodType);
+
+        databaseReference.child("Donor").child(userId).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(newdonor.this, "تم حفظ المعلومات ", Toast.LENGTH_LONG).show();
+
+                } else {
+                    Toast.makeText(newdonor.this, "فشل في حفظ المعلومات ", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        startActivity(new Intent(newdonor.this, profilepage.class));
     }
 
-    private AlertDialog.Builder showDialog(String s) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(newdonor.this);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+    private void showDialog(String s) {
+        final Dialog builder = new Dialog(newdonor.this);
+        builder.setContentView(R.layout.dialog);
+        TextView message = builder.findViewById(R.id.textMessage);
+        ImageView cancel;
+        cancel = builder.findViewById(R.id.cancel);
 
-                retrieveValue();
+        message.setText(s);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                builder.dismiss();
             }
-        })
-                .setMessage(s)
-                .setCancelable(true);
-        builder.create();
+        });
+
         builder.show();
-        return  builder;
+
     }
 }
