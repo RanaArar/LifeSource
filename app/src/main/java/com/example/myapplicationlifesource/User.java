@@ -1,5 +1,10 @@
 package com.example.myapplicationlifesource;
 
+import android.widget.EditText;
+
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+
 import java.util.Date;
 
 class User {
@@ -101,4 +106,6 @@ class User {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
+
 }

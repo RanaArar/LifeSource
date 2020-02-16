@@ -30,7 +30,9 @@
         <activity android:name=".Donorsinfo" />
         <activity android:name=".editprofile" />
         <activity android:name=".Notificationpage" />
-        <activity android:name=".profilepage" />
+        <activity
+            android:name=".profilepage"
+            android:theme="@style/AppTheme1" />
         <activity
             android:name=".MapActivity"
             android:parentActivityName=".profilepage" />

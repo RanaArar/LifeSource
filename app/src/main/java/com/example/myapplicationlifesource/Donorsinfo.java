@@ -1,9 +1,11 @@
 package com.example.myapplicationlifesource;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -14,6 +16,9 @@ public class Donorsinfo extends AppCompatActivity {
     private TextView name, age, phone, email, disease, weight;
     private ImageView gender, bloodType;
     private ImageButton call;
+    Toolbar toolbar;
+    TextView toolbarText;
+    ImageView back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +32,19 @@ public class Donorsinfo extends AppCompatActivity {
         gender = findViewById(R.id.retreive_gender);
         bloodType = findViewById(R.id.retreive_blood);
         call = findViewById(R.id.call_donor);
+        back = findViewById(R.id.back);
 
-
+        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        toolbarText = findViewById(R.id.toolbar_title);
+        toolbar.setTitle("");
+        toolbarText.setText("Donor Information");
+        back.setImageResource(R.drawable.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Donorsinfo.this, Donorslist.class));
+            }
+        });
         Intent intent = getIntent();
         name.setText(intent.getStringExtra("name"));
         age.setText(String.valueOf(intent.getIntExtra("age", 0)));

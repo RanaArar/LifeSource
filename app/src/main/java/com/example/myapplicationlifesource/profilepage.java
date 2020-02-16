@@ -12,6 +12,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -50,7 +52,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
     private String userId;
     //------------------------------------
     private Button editInfo, notification,
-            getAppointment, logout;
+            getAppointment;
 
     private static String sentToEmail;
     private ImageView doning,
@@ -83,7 +85,6 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         getAppointment = findViewById(R.id.get_appointment);
         calnder = findViewById(R.id.donate_layout);
         name = findViewById(R.id.user_name);
-        logout = findViewById(R.id.logout_donor1);
         amalLocation = findViewById(R.id.amal_location);
         nabdLocation = findViewById(R.id.nabd_location);
         hashimiLocation = findViewById(R.id.hashmi_location);
@@ -101,7 +102,6 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         calnder.setOnClickListener(this);
         notification.setOnClickListener(this);
         getAppointment.setOnClickListener(this);
-        logout.setOnClickListener(this);
         amalLocation.setOnClickListener(this);
         nabdLocation.setOnClickListener(this);
         hashimiLocation.setOnClickListener(this);
@@ -137,7 +137,29 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.log_out:
+                mAuth.signOut();
+                Intent intent = new Intent(profilepage.this, signinpage.class);
+                startActivity(intent);
+                return true;
+            case R.id.change_password:
+                startActivity(new Intent(profilepage.this, editprofile.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -163,11 +185,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
             case R.id.hashimi_hospital:
                 selectedHospital(hashimiHosiptal, amalHospital, nabdHospital);
                 break;
-            case R.id.logout_donor1:
-                mAuth.signOut();
-                Intent intent = new Intent(profilepage.this, signinpage.class);
-                startActivity(intent);
-                break;
+
             case R.id.amal_location:
                 // showMapDialog(savedInstanceState1);
                 sendToLocation("International Medical Center", 21.513575, 39.174125);

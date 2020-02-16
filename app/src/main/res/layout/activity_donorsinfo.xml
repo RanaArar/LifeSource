@@ -12,6 +12,7 @@
    android:background="@drawable/background"
     tools:context=".Donorsinfo">
 
+        <include layout="@layout/custom_tool_bar" />
 
 
     <TextView

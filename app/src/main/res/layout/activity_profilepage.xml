@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
+    android:theme="@style/AppTheme1"
     tools:context=".profilepage">
 
 
@@ -191,7 +192,6 @@
         android:id="@+id/donate_layout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_above="@+id/logout_donor1"
 
         android:layout_below="@id/donate_now"
         android:layout_marginStart="20dp"
@@ -199,7 +199,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="86dp"
+
         android:orientation="horizontal">
 
         <ImageView
@@ -219,24 +219,5 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/logout_donor1"
-        android:layout_width="137dp"
-        android:layout_height="51dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="139dp"
-        android:layout_marginLeft="139dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="134dp"
-        android:layout_marginRight="134dp"
-        android:layout_marginBottom="123dp"
-        android:background="@drawable/button"
-        android:text="Log out"
-        android:textColor="@color/colorAccent" />
 
 </RelativeLayout>
