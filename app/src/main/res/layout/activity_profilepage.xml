@@ -174,15 +174,12 @@
 
     <TextView
         android:id="@+id/donate_now"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/select_layout"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="283dp"
-        android:layout_marginRight="283dp"
-        android:layout_marginBottom="5dp"
+
         android:orientation="vertical"
         android:text="Donate now"
         android:textColor="#AE1C21"
@@ -195,13 +192,14 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_above="@+id/logout_donor1"
+
         android:layout_below="@id/donate_now"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="86dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -213,14 +211,12 @@
         <Button
             android:id="@+id/get_appointment"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:layout_gravity="center"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#D7E1F2"
             android:text="Get an Appointment"
-            android:textStyle="bold"
             android:textSize="18sp"
-            android:background="#D7E1F2" />
+            android:textStyle="bold" />
     </LinearLayout>
 
     <Button
@@ -233,12 +229,12 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:layout_marginStart="138dp"
-        android:layout_marginLeft="138dp"
+        android:layout_marginStart="139dp"
+        android:layout_marginLeft="139dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginRight="136dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="134dp"
+        android:layout_marginRight="134dp"
+        android:layout_marginBottom="123dp"
         android:background="@drawable/button"
         android:text="Log out"
         android:textColor="@color/colorAccent" />

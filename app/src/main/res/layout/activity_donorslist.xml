@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/background"
+    android:orientation="vertical"
     tools:context=".Donorslist">
 
 
+    <include layout="@layout/custom_tool_bar" />
 
-<ListView
-    android:id="@+id/list"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="10dp" />
+
+    <Button
+        android:id="@+id/logout_admin"
+        android:layout_width="137dp"
+        android:layout_height="51dp"
+        android:background="@drawable/button"
+        android:text="Log out"
+        android:textColor="@color/colorAccent"
+        android:layout_margin="5dp" />
+
 </LinearLayout>

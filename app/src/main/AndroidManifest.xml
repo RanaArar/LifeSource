@@ -32,6 +32,9 @@
         <activity android:name=".Notificationpage" />
         <activity android:name=".profilepage" />
         <activity
+            android:name=".MapActivity"
+            android:parentActivityName=".profilepage" />
+        <activity
             android:name=".signinpage"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".Donorslist" />

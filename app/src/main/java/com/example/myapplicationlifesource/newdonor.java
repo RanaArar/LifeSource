@@ -237,11 +237,11 @@ public class newdonor extends AppCompatActivity {
         }
         switch (selectedDiseaseId){
             case R.id.register_yes:
-                diseaseValue = "Y";
+                diseaseValue = "Yes";
                 break;
 
             case R.id.register_no:
-                diseaseValue = "N";
+                diseaseValue = "No";
                 break;
         }
 

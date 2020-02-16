@@ -4,11 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +20,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -36,8 +46,9 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
     private FirebaseDatabase database;
-    User user;
-    String userId;
+    private User user;
+    private String userId;
+    //------------------------------------
     private Button editInfo, notification,
             getAppointment, logout;
 
@@ -48,10 +59,20 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
 
     private LinearLayout calnder;
     private int count = 0;
+    //--------------------------------------------
+    private MapView mapView;
+    private GoogleMap gmap;
+    private static final String MAP_VIEW_BUNDLE_KEY = "MapViewBundleKey";
+    private Boolean amalBoolean, nabdBoolean, hashimiBoolean;
+    //------------------------------------
+    Bundle savedInstanceState1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // savedInstanceState1 = savedInstanceState;
         setContentView(R.layout.activity_profilepage);
+        amalBoolean = nabdBoolean = hashimiBoolean = false;
         //---------------------------------------------
         editInfo = findViewById(R.id.edit_info);
         notification = findViewById(R.id.user_notification);
@@ -73,6 +94,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         databaseReference = database.getReference("User");
         final FirebaseUser userKey = mAuth.getCurrentUser();
         userId = userKey.getUid();
+        //------------------------------------------------------------------
 
         //-------------------------Listeners---------------------------------------
         editInfo.setOnClickListener(this);
@@ -87,6 +109,8 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         hashimiHosiptal.setOnClickListener(this);
         amalHospital.setOnClickListener(this);
         nabdHospital.setOnClickListener(this);
+
+
         //------------------------retrieve user name-------------------------
 
         databaseReference.child("Donor").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -114,7 +138,6 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
     }
 
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -128,9 +151,10 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
                 startActivity(new Intent(profilepage.this, Notificationpage.class));
                 break;
             case R.id.donate_layout:
-                chooseDate();
+                SendingEmail();
                 break;
             case R.id.amal_hospital:
+                selectHospitalBoolean(amalHospital, amalBoolean, nabdBoolean, hashimiBoolean);
                 selectedHospital(amalHospital, nabdHospital, hashimiHosiptal);
                 break;
             case R.id.nabd_hospital:
@@ -145,19 +169,29 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
                 startActivity(intent);
                 break;
             case R.id.amal_location:
-                sendToLocation(21.513575, 39.174125);
+                // showMapDialog(savedInstanceState1);
+                sendToLocation("International Medical Center", 21.513575, 39.174125);
                 break;
             case R.id.nabd_location:
-                sendToLocation(21.543346, 39.166610);
+                //   showMapDialog(savedInstanceState1);
+                sendToLocation("King Fahad General Hospital", 21.543346, 39.166610);
                 break;
             case R.id.hashmi_location:
-                sendToLocation(21.505549, 39.166208);
+                // showMapDialog(savedInstanceState1);
+
+                sendToLocation("United Doctors Hospital", 21.505549, 39.166208);
                 break;
         }
     }
 
-    private void sendToLocation(double lat, double lag) {
-        String uri = String.format(Locale.ENGLISH, "geo:%f,%f?z=21", lat, lag);
+
+    private void sendToLocation(String s, double lat, double lag) {
+        Intent intent = new Intent(profilepage.this, MapActivity.class);
+        intent.putExtra("lat", lat);
+        intent.putExtra("long", lag);
+        intent.putExtra("title", s);
+        startActivity(intent);
+/*        String uri = String.format(Locale.ENGLISH, "geo:%f,%f?z=21", lat, lag);
 
         Uri location = Uri.parse(uri);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
@@ -166,14 +200,20 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
             startActivity(mapIntent);
         } else {
             Toast.makeText(this, "Install Google Map to View Maps", Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
-    private void chooseDate() {
-
+    private void SendingEmail() {
+//  for sending emails
 
     }
 
+
+    /* -------------------------------------------------*
+     *                                                  *
+     *         Select Hospital Function                 *
+     *                                                  *
+     *--------------------------------------------------*/
     private void selectedHospital(TextView t, TextView otherText, TextView otherText1) {
         otherText.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         otherText1.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -194,5 +234,14 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
             }
         });
 
+    }
+
+    private void selectHospitalBoolean(TextView selected, Boolean selectedBoolean, Boolean otherBoolean, Boolean other2Boolean) {
+
+        if (selected.getDrawingCacheBackgroundColor() == getResources().getColor(R.color.colorAccent)) {
+            selectedBoolean = true;
+            otherBoolean = false;
+            other2Boolean = false;
+        }
     }
 }

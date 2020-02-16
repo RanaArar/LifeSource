@@ -8,7 +8,7 @@
     android:background="@drawable/background"
     tools:context=".adminpage">
 
-
+    <include layout="@layout/custom_tool_bar" />
     <TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"
@@ -21,15 +21,16 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"/>
-
     <EditText
-        android:id="@+id/pass_admin"
+        android:id="@+id/email_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your password"
+        android:hint="Enter your e-mail"
+        android:inputType="textEmailAddress"
         android:layout_marginBottom="5dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp" />
+
 
     <TextView
         android:id="@+id/textView2"
@@ -42,15 +43,16 @@
         android:layout_marginBottom="5dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp" />
+
     <EditText
-        android:id="@+id/email_admin"
+        android:inputType="textPassword"
+        android:id="@+id/pass_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your e-mail"
+        android:hint="Enter your password"
         android:layout_marginBottom="5dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp" />
-
 
     <Button
         android:id="@+id/sign_adimn"
