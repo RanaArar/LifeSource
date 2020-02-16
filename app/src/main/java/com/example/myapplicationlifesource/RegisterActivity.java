@@ -20,6 +20,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import es.dmoral.toasty.Toasty;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private Button register;
@@ -74,7 +76,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 } else {
 
                                     String errorMessage = task.getException().getMessage();
-                                    Toast.makeText(RegisterActivity.this, "Error :" + errorMessage, Toast.LENGTH_LONG).show();
+                                    //     Toast.makeText(RegisterActivity.this, "Error :" + errorMessage, Toast.LENGTH_LONG).show();
+                                    Toasty.error(RegisterActivity.this, "Error :" + errorMessage);
                                     finish();
                                 }
 
@@ -85,7 +88,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                     } else {
 
-                        Toast.makeText(RegisterActivity.this, "Confirm Password doesn't match the password .. Type again", Toast.LENGTH_LONG).show();
+                        Toasty.info(RegisterActivity.this, "Confirm Password doesn't match the password .. Type again");
+                        // Toast.makeText(RegisterActivity.this, "Confirm Password doesn't match the password .. Type again", Toast.LENGTH_LONG).show();
                     }
                 }
             }

@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import es.dmoral.toasty.Toasty;
+
 public class adminpage extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Toolbar toolbar;
@@ -60,15 +62,15 @@ public class adminpage extends AppCompatActivity {
 
                                 } else {
                                     String errorMessage = task.getException().getMessage();
-                                    Toast.makeText(adminpage.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
-
+                                    //  Toast.makeText(adminpage.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
+                                    Toasty.error(adminpage.this, "Error : " + errorMessage);
 
                                 }
                             }
                         });
                     } else {
-                        Toast.makeText(adminpage.this, "you are not an admin", Toast.LENGTH_LONG).show();
-
+                        //Toast.makeText(adminpage.this, "you are not an admin", Toast.LENGTH_LONG).show();
+                        Toasty.info(adminpage.this, "you are not an admin");
                     }
                 }
 

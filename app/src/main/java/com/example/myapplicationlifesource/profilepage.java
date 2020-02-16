@@ -44,6 +44,8 @@ import org.w3c.dom.Text;
 
 import java.util.Locale;
 
+import es.dmoral.toasty.Toasty;
+
 public class profilepage extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
@@ -62,19 +64,13 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
     private LinearLayout calnder;
     private int count = 0;
     //--------------------------------------------
-    private MapView mapView;
-    private GoogleMap gmap;
-    private static final String MAP_VIEW_BUNDLE_KEY = "MapViewBundleKey";
-    private Boolean amalBoolean, nabdBoolean, hashimiBoolean;
-    //------------------------------------
-    Bundle savedInstanceState1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // savedInstanceState1 = savedInstanceState;
         setContentView(R.layout.activity_profilepage);
-        amalBoolean = nabdBoolean = hashimiBoolean = false;
         //---------------------------------------------
         editInfo = findViewById(R.id.edit_info);
         notification = findViewById(R.id.user_notification);
@@ -124,7 +120,8 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
                         sentToEmail = user.getEmail();
 
                     } else {
-                        Toast.makeText(profilepage.this, "No data for the user", Toast.LENGTH_LONG).show();
+                        Toasty.error(profilepage.this, "No data for the user");
+                        //  Toast.makeText(profilepage.this, "No data for the user", Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -164,7 +161,8 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.donoing:
-                Toast.makeText(this, "Number of donation:" + count, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(this, "Number of donation:" + count, Toast.LENGTH_SHORT).show();
+                Toasty.info(this, "Number of donation:" + count);
                 break;
             case R.id.edit_info:
                 startActivity(new Intent(profilepage.this, newdonor.class));
@@ -176,7 +174,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
                 SendingEmail();
                 break;
             case R.id.amal_hospital:
-                selectHospitalBoolean(amalHospital, amalBoolean, nabdBoolean, hashimiBoolean);
+                //  selectHospitalBoolean(amalHospital, amalBoolean, nabdBoolean, hashimiBoolean);
                 selectedHospital(amalHospital, nabdHospital, hashimiHosiptal);
                 break;
             case R.id.nabd_hospital:
@@ -242,10 +240,11 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(profilepage.this, selectedHospital + " is stored ", Toast.LENGTH_LONG).show();
-
+                    //   Toast.makeText(profilepage.this, selectedHospital + " is stored ", Toast.LENGTH_LONG).show();
+                    Toasty.success(profilepage.this, selectedHospital + " is stored ");
                 } else {
-                    Toast.makeText(profilepage.this, "Failed ", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(profilepage.this, "Failed ", Toast.LENGTH_LONG).show();
+                    Toasty.error(profilepage.this, "Failed ");
                 }
 
 
@@ -254,12 +253,4 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
 
     }
 
-    private void selectHospitalBoolean(TextView selected, Boolean selectedBoolean, Boolean otherBoolean, Boolean other2Boolean) {
-
-        if (selected.getDrawingCacheBackgroundColor() == getResources().getColor(R.color.colorAccent)) {
-            selectedBoolean = true;
-            otherBoolean = false;
-            other2Boolean = false;
-        }
-    }
 }

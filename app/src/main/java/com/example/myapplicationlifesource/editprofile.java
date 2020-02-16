@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import es.dmoral.toasty.Toasty;
+
 public class editprofile extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private FirebaseDatabase database;
@@ -78,14 +80,17 @@ public class editprofile extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Toast.makeText(editprofile.this, "password Updated", Toast.LENGTH_SHORT).show();
+                                                    //Toast.makeText(editprofile.this, "password Updated", Toast.LENGTH_SHORT).show();
+                                                    Toasty.success(editprofile.this, "password Updated");
                                                 } else {
-                                                    Toast.makeText(editprofile.this, "Error password not updated", Toast.LENGTH_SHORT).show();
+                                                    //  Toast.makeText(editprofile.this, "Error password not updated", Toast.LENGTH_SHORT).show();
+                                                    Toasty.error(editprofile.this, "Error password not updated");
                                                 }
                                             }
                                         });
                                     } else {
-                                        Toast.makeText(editprofile.this, "Error auth failed", Toast.LENGTH_SHORT).show();
+                                        //  Toast.makeText(editprofile.this, "Error auth failed", Toast.LENGTH_SHORT).show();
+                                        Toasty.error(editprofile.this, "Error auth failed");
                                     }
                                 }
                             });

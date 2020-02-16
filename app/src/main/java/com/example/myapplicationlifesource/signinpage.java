@@ -20,6 +20,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import es.dmoral.toasty.Toasty;
+
 public class signinpage extends AppCompatActivity {
     private EditText email, pass;
     private FirebaseAuth mAuth;
@@ -66,8 +68,8 @@ public class signinpage extends AppCompatActivity {
                                 startActivity(intent);
                             }else{
                                 String errorMessage = task.getException().getMessage();
-                                Toast.makeText(signinpage.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
-
+                                //  Toast.makeText(signinpage.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
+                                Toasty.error(signinpage.this, "Error : " + errorMessage);
 
                             }
                             progressBar.setVisibility(View.INVISIBLE);

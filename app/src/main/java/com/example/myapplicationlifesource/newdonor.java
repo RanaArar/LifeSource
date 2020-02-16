@@ -39,6 +39,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.Inflater;
 
+import es.dmoral.toasty.Toasty;
+
 public class newdonor extends AppCompatActivity {
 
     private EditText name, age, weight, phone, email;
@@ -258,10 +260,11 @@ public class newdonor extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(newdonor.this, "تم حفظ المعلومات ", Toast.LENGTH_LONG).show();
-
+                    //     Toast.makeText(newdonor.this, "تم حفظ المعلومات ", Toast.LENGTH_LONG).show();
+                    Toasty.success(newdonor.this, "Saved");
                 } else {
-                    Toast.makeText(newdonor.this, "فشل في حفظ المعلومات ", Toast.LENGTH_LONG).show();
+                    //  Toast.makeText(newdonor.this, "فشل في حفظ المعلومات ", Toast.LENGTH_LONG).show();
+                    Toasty.error(newdonor.this, "Failed");
                 }
             }
         });
