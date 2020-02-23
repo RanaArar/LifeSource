@@ -1,236 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-   android:background="@drawable/background"
-    tools:context=".Donorsinfo">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        android:orientation="vertical"
+        tools:context=".Donorsinfo">
 
         <include layout="@layout/custom_tool_bar" />
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textColor="#A22F48"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Name"
+            android:textColor="#A22F48"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/retreive_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp"
+        <TextView
+            android:id="@+id/retreive_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
 
-        android:text="Ahmed Nasser"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+            android:text="Ahmed Nasser"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Age"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
 
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:textColor="#A22F48"
-        android:textSize="20sp"
-        android:textStyle="bold"
-  />
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Age"
+            android:textColor="#A22F48"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
 
-    <TextView
-        android:id="@+id/retreive_age"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/retreive_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp"
-        android:text="27"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="27"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Weight "
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
 
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:textColor="#A22F48"
-        android:textSize="20sp"
-        android:textStyle="bold"
-/>
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Weight "
+            android:textColor="#A22F48"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/retreive_weight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/retreive_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp"
-        android:text="78"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="78"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gender "
-        android:textColor="#A22F48"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Gender "
 
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-    />
+            android:textColor="#A22F48"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/retreive_gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/male" />
+        <ImageView
+            android:id="@+id/retreive_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/male" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Do You Have Any Infectious Diseases? "
-        android:textColor="#A22F48"
-        android:textSize="20sp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
 
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:textStyle="bold"
- />
+            android:text="Do You Have Any Infectious Diseases? "
+            android:textColor="#A22F48"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/retreive_disease"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp"
+        <TextView
+            android:id="@+id/retreive_disease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
 
-        android:text="No"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+            android:text="No"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select blood Group "
-        android:textColor="#A22F48"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Select blood Group "
 
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="527dp" />
+            android:textColor="#A22F48"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="527dp" />
 
         <ImageView
             android:id="@+id/retreive_blood"
-        android:layout_width="42dp"
-        android:layout_height="41dp"
+            android:layout_width="42dp"
+            android:layout_height="41dp"
 
             android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/bloodbplus" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" Mobile number"
-        android:textColor="#A22F48"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:text=" Mobile number"
 
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp" />
+            android:textColor="#A22F48"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/retreive_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp"
+        <TextView
+            android:id="@+id/retreive_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
 
-        android:text="0096253*******"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+            android:text="0096253*******"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" E-mail"
-        android:textColor="#A22F48"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:text=" E-mail"
 
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp" />
+            android:textColor="#A22F48"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/retreive_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp"
+        <TextView
+            android:id="@+id/retreive_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
 
-        android:text="Ah_na@gmail.com"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-
-    <ImageButton
-        android:id="@+id/call_donor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/callbutton" />
+            android:text="Ah_na@gmail.com"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
 
-</LinearLayout>
+        <Button
+            android:id="@+id/call_donor"
+
+            android:layout_width="137dp"
+
+            android:layout_height="51dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+
+            android:background="@drawable/button"
+            android:text="call"
+            android:textColor="#fff" />
+
+
+    </LinearLayout>
 </ScrollView>

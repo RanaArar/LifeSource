@@ -71,12 +71,14 @@
 
     <Button
         android:id="@+id/sign_donor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="137dp"
+        android:layout_height="51dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/signinbutton" />
+        android:text="Sign In"
+        android:textColor="#fff"
+        android:background="@drawable/button" />
 
 
 </LinearLayout>

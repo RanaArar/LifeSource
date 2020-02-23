@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private Toolbar toolbar;
     private TextView toolbarText;
+    private ImageView back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +48,19 @@ public class RegisterActivity extends AppCompatActivity {
 
         toolbar = (Toolbar)findViewById(R.id.main_toolbar);
         toolbarText = findViewById(R.id.toolbar_title);
-
+        back = findViewById(R.id.back);
+        back.setImageResource(R.drawable.back);
         toolbar.setTitle("");
         toolbarText.setText("Register New Donor");
 
         //-----------------------------------------------------
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+            }
+        });
+        //-----------------------------------------------------
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override

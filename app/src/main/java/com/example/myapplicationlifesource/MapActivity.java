@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -52,6 +53,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mapView.onCreate(mapViewBundle);
         mapView.getMapAsync(MapActivity.this);
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MapActivity.this, profilepage.class));
+            }
+        });
     }
     /* -------------------------------------------------*
      *                                                  *

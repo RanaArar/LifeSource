@@ -15,7 +15,7 @@ public class Donorsinfo extends AppCompatActivity {
 
     private TextView name, age, phone, email, disease, weight;
     private ImageView gender, bloodType;
-    private ImageButton call;
+    private Button call;
     Toolbar toolbar;
     TextView toolbarText;
     ImageView back;

@@ -2,16 +2,11 @@ package com.example.myapplicationlifesource;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,18 +15,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.UiSettings;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.example.myapplicationlifesource.JavaMail.SendMailAsyncTask;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -40,9 +27,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
-import java.util.Locale;
 
 import es.dmoral.toasty.Toasty;
 
@@ -134,6 +118,11 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
 
     }
 
+    /* -------------------------------------------------*
+     *                                                  *
+     *             Select Menu Functions                *
+     *                                                  *
+     *--------------------------------------------------*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -157,6 +146,12 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    /* -------------------------------------------------*
+     *                                                  *
+     *         on click buttons Function                *
+     *                                                  *
+     *--------------------------------------------------*/
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -200,27 +195,61 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-
+    /* -------------------------------------------------*
+     *                                                  *
+     *         send to map activity Function            *
+     *                                                  *
+     *--------------------------------------------------*/
     private void sendToLocation(String s, double lat, double lag) {
         Intent intent = new Intent(profilepage.this, MapActivity.class);
         intent.putExtra("lat", lat);
         intent.putExtra("long", lag);
         intent.putExtra("title", s);
         startActivity(intent);
-/*        String uri = String.format(Locale.ENGLISH, "geo:%f,%f?z=21", lat, lag);
-
-        Uri location = Uri.parse(uri);
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        if (mapIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(mapIntent);
-        } else {
-            Toast.makeText(this, "Install Google Map to View Maps", Toast.LENGTH_SHORT).show();
-        }*/
     }
 
+    /* -------------------------------------------------*
+     *                                                  *
+     *        sending emails Function                   *
+     *                                                  *
+     *--------------------------------------------------*/
     private void SendingEmail() {
 //  for sending emails
+
+        //   try{
+     /*       GMailSender sender = new GMailSender("nolemohd.000@gmail.com", "NoLe6814302**");
+            sender.sendMail("This is Subject",
+                    "This is Body",
+                    "nolemohd.000@gmail.com",
+                    "mmsaj000@hotmail.com");*/
+        new SendMailAsyncTask(profilepage.this, "mmsaj000@hotmail.com", "hello", "its work").execute();
+        Toasty.info(profilepage.this, "email was sent");
+      /*  } catch (Exception e) {
+            Log.e("SendMail", e.getMessage(), e);
+            Toasty.error(profilepage.this,"email wasnt sent");
+
+        }*/
+       /* MandrillMessage allMessage = new MandrillMessage("d0e2b422162572b6d21714fbc69e17f8-us4");
+        EmailMessage message = new EmailMessage();
+        message.setFromEmail("nolemohd.000@gmail.com");
+        message.setFromName("buddy");
+        message.setText("blah blah blah .... ");
+        message.setSubject("error");
+
+        Recipient recipient = new Recipient();
+        List<Recipient> recipients = new ArrayList<Recipient>();
+
+        recipient.setEmail("nolemohd.000@gmail.com");
+        recipient.setName("soroush");
+        recipients.add(recipient);
+
+        message.setTo(recipients);
+
+        // If you are sending images, use:
+        // message.setImages(attachments);
+
+        allMessage.setMessage(message);
+        allMessage.send();*/
 
     }
 

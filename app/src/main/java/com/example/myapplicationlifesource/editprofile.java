@@ -33,7 +33,7 @@ public class editprofile extends AppCompatActivity {
     String userId;
     FirebaseAuth mAuth;
     private EditText newPass, email, pass;
-    private ImageButton save;
+    private Button save;
     private Toolbar toolbar;
     private TextView toolbarText;
     @Override

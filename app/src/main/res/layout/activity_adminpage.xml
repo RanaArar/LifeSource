@@ -56,10 +56,11 @@
 
     <Button
         android:id="@+id/sign_adimn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="137dp"
+        android:layout_height="51dp"
 
-        android:background="@drawable/signinbutton"
+        android:background="@drawable/button"
+        android:text="Sign In"
         android:textColor="#FBF9F9"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
