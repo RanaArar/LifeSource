@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 public class Donorsinfo extends AppCompatActivity {
 
     private TextView name, age, phone, email, disease, weight;
@@ -88,6 +90,22 @@ public class Donorsinfo extends AppCompatActivity {
 
         }
 
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SendEmailAndNotification();
+            }
+        });
+
+    }
+
+    private void SendEmailAndNotification() {
+
+        //--------------send email -------------
+
+        //--------------notification--------------
+
+        FirebaseMessaging.getInstance().subscribeToTopic("CALL_DONOR");
 
     }
 }

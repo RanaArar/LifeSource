@@ -40,24 +40,24 @@
 
         <ImageView
             android:id="@+id/donoing"
-            android:layout_width="92dp"
-            android:layout_height="86dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:src="@drawable/cou"
             tools:layout_editor_absoluteX="262dp"
             tools:layout_editor_absoluteY="98dp" />
 
         <Button
             android:id="@+id/edit_info"
-            android:layout_width="79dp"
-            android:layout_height="79dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:background="@drawable/setting"
             tools:layout_editor_absoluteX="335dp"
             tools:layout_editor_absoluteY="98dp" />
 
         <Button
             android:id="@+id/user_notification"
-            android:layout_width="68dp"
-            android:layout_height="86dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:background="@drawable/notificon"
             tools:layout_editor_absoluteX="194dp"
             tools:layout_editor_absoluteY="93dp" />
@@ -215,6 +215,7 @@
             android:layout_weight="1"
             android:background="#D7E1F2"
             android:text="Get an Appointment"
+            android:textAllCaps="false"
             android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>
