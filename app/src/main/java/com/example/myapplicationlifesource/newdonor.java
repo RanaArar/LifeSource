@@ -32,6 +32,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.onesignal.OneSignal;
 
 import org.w3c.dom.Text;
 
@@ -61,12 +62,15 @@ public class newdonor extends AppCompatActivity {
     private int selectedGenderID,selectedDiseaseId;
     private static String selectedBloodType;
     final List<String> items= new ArrayList<String>();;
-
+    String userEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newdonor);
-
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
         //-------------------------------------------------------------------------
         name = findViewById(R.id.register_name);
         age = findViewById(R.id.register_age);
@@ -103,6 +107,7 @@ public class newdonor extends AppCompatActivity {
         databaseReference = database.getReference("User");
         final FirebaseUser userKey = mAuth.getCurrentUser();
         userId = userKey.getUid();
+        userEmail = userKey.getEmail();
         //------------------------spinner---------------------------------------
 
         items.add("A+");
@@ -260,10 +265,10 @@ public class newdonor extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    //     Toast.makeText(newdonor.this, "تم حفظ المعلومات ", Toast.LENGTH_LONG).show();
                     Toasty.success(newdonor.this, "Saved");
+                    OneSignal.sendTag("User_ID", user.getEmail());
+
                 } else {
-                    //  Toast.makeText(newdonor.this, "فشل في حفظ المعلومات ", Toast.LENGTH_LONG).show();
                     Toasty.error(newdonor.this, "Failed");
                 }
             }

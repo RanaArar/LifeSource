@@ -4,14 +4,38 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.myapplicationlifesource.JavaMail.Config;
+import com.example.myapplicationlifesource.JavaMail.GMailSender;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.onesignal.OneSignal;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+import es.dmoral.toasty.Toasty;
 
 public class Donorsinfo extends AppCompatActivity {
 
@@ -21,10 +45,27 @@ public class Donorsinfo extends AppCompatActivity {
     Toolbar toolbar;
     TextView toolbarText;
     ImageView back;
+    //----------------------
+    final private String FCM_API = "https://fcm.googleapis.com/fcm/send";
+    final private String serverKey = "key=" + "AAAAoDfjYzY:APA91bGtPVQAAAHgIsKTOmxQyVAFzHwUuc36tC9-b4ZR4s2k6iG_2SUD0c0r1RGt5j4_xa1TwfDnyHG0GppI5xrjSjZ7de4qQteF7eJQ5iAycWrS6ky4j5JxSBv38uJvznlg2hUTOX_Z";
+    final private String contentType = "application/json";
+    final String TAG = "NOTIFICATION TAG";
+    Intent intent;
+    String user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donorsinfo);
+        //OneSignal.setLogLevel(OneSignal.LOG_LEVEL.DEBUG, OneSignal.LOG_LEVEL.DEBUG);
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
+
+        user = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        OneSignal.sendTag("User_ID", user);
+        //--------------------------------------------
         name = findViewById(R.id.retreive_name);
         age = findViewById(R.id.retreive_age);
         phone = findViewById(R.id.retreive_phone);
@@ -47,7 +88,7 @@ public class Donorsinfo extends AppCompatActivity {
                 startActivity(new Intent(Donorsinfo.this, Donorslist.class));
             }
         });
-        Intent intent = getIntent();
+        intent = getIntent();
         name.setText(intent.getStringExtra("name"));
         age.setText(String.valueOf(intent.getIntExtra("age", 0)));
         phone.setText(intent.getStringExtra("phone"));
@@ -103,9 +144,93 @@ public class Donorsinfo extends AppCompatActivity {
 
         //--------------send email -------------
 
+/*        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    GMailSender sender = new GMailSender("nolemohd.000@gmail.com","NoLe6814302**");  // password is your email password
+                    sender.sendMail("Email Title ", " Email Body ","mmsaj00000@gmail.com","mmsaj000@hotmail.com");
+                }
+                catch (Exception e)
+                {
+                    Log.e("SendMail", e.getMessage(), e);
+                }
+            }
+
+        }).start();*/
+// todo: use the same fun of sending mail
         //--------------notification--------------
 
-        FirebaseMessaging.getInstance().subscribeToTopic("CALL_DONOR");
+        sendNotification();
 
+    }
+
+    private void sendNotification() {
+
+
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                int SDK_INT = android.os.Build.VERSION.SDK_INT;
+                if (SDK_INT > 8) {
+                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                            .permitAll().build();
+                    StrictMode.setThreadPolicy(policy);
+                    String send_email = intent.getStringExtra("email");
+
+
+                    try {
+                        String jsonResponse;
+
+                        URL url = new URL("https://onesignal.com/api/v1/notifications");
+                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                        con.setUseCaches(false);
+                        con.setDoOutput(true);
+                        con.setDoInput(true);
+
+                        con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                        con.setRequestProperty("Authorization", "Basic Mjk1MjhkZmQtMjY3YS00ZTY2LTkxYTMtNDU3NDdjNzk5OTI5");
+                        con.setRequestMethod("POST");
+
+                        String strJsonBody = "{"
+                                + "\"app_id\": \"bd9bb495-89b5-497f-ae50-d6a6d99c1aff\","
+
+                                + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
+
+                                + "\"data\": {\"foo\": \"bar\"},"
+                                + "\"contents\": {\"en\": \"WE HAVE A NEED FOR YOUR BLOOD, PLEASE COME !!\"}"
+                                + "}";
+
+
+                        System.out.println("strJsonBody:\n" + strJsonBody);
+
+                        byte[] sendBytes = strJsonBody.getBytes("UTF-8");
+                        con.setFixedLengthStreamingMode(sendBytes.length);
+
+                        OutputStream outputStream = con.getOutputStream();
+                        outputStream.write(sendBytes);
+
+                        int httpResponse = con.getResponseCode();
+                        System.out.println("httpResponse: " + httpResponse);
+
+                        if (httpResponse >= HttpURLConnection.HTTP_OK
+                                && httpResponse < HttpURLConnection.HTTP_BAD_REQUEST) {
+                            Scanner scanner = new Scanner(con.getInputStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        } else {
+                            Scanner scanner = new Scanner(con.getErrorStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        }
+                        System.out.println("jsonResponse:\n" + jsonResponse);
+
+                    } catch (Throwable t) {
+                        t.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 }

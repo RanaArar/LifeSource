@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplicationlifesource.JavaMail.SendMailAsyncTask;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +28,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
+import java.util.Random;
 
 import es.dmoral.toasty.Toasty;
 
@@ -105,7 +108,6 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
 
                     } else {
                         Toasty.error(profilepage.this, "No data for the user");
-                        //  Toast.makeText(profilepage.this, "No data for the user", Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -214,42 +216,14 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
      *                                                  *
      *--------------------------------------------------*/
     private void SendingEmail() {
-//  for sending emails
 
-        //   try{
-     /*       GMailSender sender = new GMailSender("nolemohd.000@gmail.com", "NoLe6814302**");
-            sender.sendMail("This is Subject",
-                    "This is Body",
-                    "nolemohd.000@gmail.com",
-                    "mmsaj000@hotmail.com");*/
-        new SendMailAsyncTask(profilepage.this, "mmsaj000@hotmail.com", "hello", "its work").execute();
+        //TODO: set random time and message
+        int random = new Random().nextInt();
+        String title = "Confirm of appointment";
+        String content = "Dear donor , \n this is a confirmation of your appointment at " + random + "in " + user.getHospital() + "\n Wash you all the best";
+        new SendMailAsyncTask(profilepage.this, "mmsaj000@hotmail.com", title, content).execute();
+        Toast.makeText(this, "email " + sentToEmail, Toast.LENGTH_SHORT).show();
         Toasty.info(profilepage.this, "email was sent");
-      /*  } catch (Exception e) {
-            Log.e("SendMail", e.getMessage(), e);
-            Toasty.error(profilepage.this,"email wasnt sent");
-
-        }*/
-       /* MandrillMessage allMessage = new MandrillMessage("d0e2b422162572b6d21714fbc69e17f8-us4");
-        EmailMessage message = new EmailMessage();
-        message.setFromEmail("nolemohd.000@gmail.com");
-        message.setFromName("buddy");
-        message.setText("blah blah blah .... ");
-        message.setSubject("error");
-
-        Recipient recipient = new Recipient();
-        List<Recipient> recipients = new ArrayList<Recipient>();
-
-        recipient.setEmail("nolemohd.000@gmail.com");
-        recipient.setName("soroush");
-        recipients.add(recipient);
-
-        message.setTo(recipients);
-
-        // If you are sending images, use:
-        // message.setImages(attachments);
-
-        allMessage.setMessage(message);
-        allMessage.send();*/
 
     }
 
