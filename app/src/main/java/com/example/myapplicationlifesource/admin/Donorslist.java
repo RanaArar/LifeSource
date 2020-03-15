@@ -1,4 +1,4 @@
-package com.example.myapplicationlifesource;
+package com.example.myapplicationlifesource.admin;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.myapplicationlifesource.MainActivity;
+import com.example.myapplicationlifesource.R;
+import com.example.myapplicationlifesource.User;
+import com.example.myapplicationlifesource.UserAdapter;
+import com.example.myapplicationlifesource.admin.Donorsinfo;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

@@ -11,7 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -27,21 +26,22 @@
         <activity
             android:name=".newdonor"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".Donorsinfo" />
-        <activity android:name=".editprofile" />
+        <activity android:name=".admin.Donorsinfo" />
+        <activity android:name=".donor.editprofile" />
         <activity android:name=".Notificationpage" />
+        <activity android:name=".donor.RegisterActivity" />
         <activity
-            android:name=".profilepage"
+            android:name=".donor.profilepage"
             android:theme="@style/AppTheme1" />
         <activity
-            android:name=".MapActivity"
-            android:parentActivityName=".profilepage" />
+            android:name=".donor.MapActivity"
+            android:parentActivityName=".donor.profilepage" />
         <activity
             android:name=".signinpage"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".Donorslist" />
+        <activity android:name=".admin.Donorslist" />
         <activity
-            android:name=".adminpage"
+            android:name=".admin.adminpage"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

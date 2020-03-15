@@ -7,7 +7,7 @@ import com.google.firebase.auth.AuthCredential;
 
 import java.util.Date;
 
-class User {
+public class User {
     String name, email, phone, bloodType, gender, diseases, hospital;
 
     Date appointment;

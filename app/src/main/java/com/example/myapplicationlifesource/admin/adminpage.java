@@ -1,4 +1,4 @@
-package com.example.myapplicationlifesource;
+package com.example.myapplicationlifesource.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplicationlifesource.R;
+import com.example.myapplicationlifesource.admin.Donorslist;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -28,13 +30,14 @@ public class adminpage extends AppCompatActivity {
     private TextView toolbarText;
     Button signIn;
     EditText email, pass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adminpage);
 
         mAuth = FirebaseAuth.getInstance();
-        signIn  = findViewById(R.id.sign_adimn);
+        signIn = findViewById(R.id.sign_adimn);
         email = findViewById(R.id.email_admin);
         pass = findViewById(R.id.pass_admin);
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);

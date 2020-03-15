@@ -1,4 +1,4 @@
-package com.example.myapplicationlifesource;
+package com.example.myapplicationlifesource.donor;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplicationlifesource.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;

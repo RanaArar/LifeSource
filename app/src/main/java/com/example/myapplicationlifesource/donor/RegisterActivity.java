@@ -1,4 +1,4 @@
-package com.example.myapplicationlifesource;
+package com.example.myapplicationlifesource.donor;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +16,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplicationlifesource.MainActivity;
+import com.example.myapplicationlifesource.R;
+import com.example.myapplicationlifesource.newdonor;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -33,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView toolbarText;
     private ImageView back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
         confirmPass = findViewById(R.id.confirm_pass);
         progressBar = findViewById(R.id.register_progressBar);
 
-        toolbar = (Toolbar)findViewById(R.id.main_toolbar);
+        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbarText = findViewById(R.id.toolbar_title);
         back = findViewById(R.id.back);
         back.setImageResource(R.drawable.back);

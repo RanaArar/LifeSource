@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.myapplicationlifesource.admin.adminpage;
+import com.example.myapplicationlifesource.donor.RegisterActivity;
+
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
 
     Button adminPage , SignIn , newDonor;
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         switch (v.getId()){
 
             case R.id.admin_page:
-                intent = new Intent(MainActivity.this,adminpage.class);
+                intent = new Intent(MainActivity.this, adminpage.class);
 
                 break;
 
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 break;
 
             case R.id.new_donor:
-                intent = new Intent(MainActivity.this,RegisterActivity.class);
+                intent = new Intent(MainActivity.this, RegisterActivity.class);
 
                 break;
         }

@@ -1,4 +1,4 @@
-package com.example.myapplicationlifesource;
+package com.example.myapplicationlifesource.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -21,6 +21,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.myapplicationlifesource.JavaMail.Config;
 import com.example.myapplicationlifesource.JavaMail.GMailSender;
+import com.example.myapplicationlifesource.JavaMail.SendMailAsyncTask;
+import com.example.myapplicationlifesource.R;
+import com.example.myapplicationlifesource.donor.profilepage;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.onesignal.OneSignal;
@@ -46,16 +49,15 @@ public class Donorsinfo extends AppCompatActivity {
     TextView toolbarText;
     ImageView back;
     //----------------------
-    final private String FCM_API = "https://fcm.googleapis.com/fcm/send";
-    final private String serverKey = "key=" + "AAAAoDfjYzY:APA91bGtPVQAAAHgIsKTOmxQyVAFzHwUuc36tC9-b4ZR4s2k6iG_2SUD0c0r1RGt5j4_xa1TwfDnyHG0GppI5xrjSjZ7de4qQteF7eJQ5iAycWrS6ky4j5JxSBv38uJvznlg2hUTOX_Z";
-    final private String contentType = "application/json";
-    final String TAG = "NOTIFICATION TAG";
+
     Intent intent;
     String user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donorsinfo);
+        // debug the OneSignal
         //OneSignal.setLogLevel(OneSignal.LOG_LEVEL.DEBUG, OneSignal.LOG_LEVEL.DEBUG);
         // OneSignal Initialization
         OneSignal.startInit(this)
@@ -159,6 +161,12 @@ public class Donorsinfo extends AppCompatActivity {
             }
 
         }).start();*/
+        String title = "We need you, LIFE SAVER";
+        String content = "Dear donor , \n \n we need your help for some blood \n  \n This is the good time for some charity" +
+                "\n\n do not miss that :) ";
+//intent.getStringExtra("email")
+        new SendMailAsyncTask(Donorsinfo.this, "mmsaj000@hotmail.com", title, content).execute();
+
 // todo: use the same fun of sending mail
         //--------------notification--------------
 

@@ -23,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplicationlifesource.donor.profilepage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,7 +48,7 @@ public class newdonor extends AppCompatActivity {
     private EditText name, age, weight, phone, email;
     private Spinner bloodType;
     private String userId;
-    private User user;
+    private com.example.myapplicationlifesource.User user;
     private DatabaseReference databaseReference;
     private FirebaseDatabase database;
     private FirebaseAuth mAuth;
@@ -102,7 +103,7 @@ public class newdonor extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        user = new User();
+        user = new com.example.myapplicationlifesource.User();
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("User");
         final FirebaseUser userKey = mAuth.getCurrentUser();
@@ -142,7 +143,7 @@ public class newdonor extends AppCompatActivity {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
 
                     if (data.exists()) {
-                        user = dataSnapshot.getValue(User.class);
+                        user = dataSnapshot.getValue(com.example.myapplicationlifesource.User.class);
                         retrieveValue();
                     } else {
                         Toast.makeText(newdonor.this, "No data for the user", Toast.LENGTH_LONG).show();
@@ -178,7 +179,6 @@ public class newdonor extends AppCompatActivity {
     }
 
     private void retrieveValue() {
-       /* try{*/
 
             name.setText( user.getName());
             age.setText(String.valueOf(user.getAge()));
@@ -191,7 +191,7 @@ public class newdonor extends AppCompatActivity {
             else
                 gender.check(R.id.register_male);
 
-            if(user.getDiseases()=="Y")
+        if (user.getDiseases().equals("Y"))
                 disease.check(R.id.register_yes);
             else
                 disease.check(R.id.register_no);
@@ -202,10 +202,7 @@ public class newdonor extends AppCompatActivity {
                 else
                     bloodType.setSelection(0);
             }
-   /*     }  catch (Exception e) {
-        Toast.makeText(newdonor.this, e.getMessage(), Toast.LENGTH_LONG).show();*/
 
-    //}
     }
 
     private void storeData() {
@@ -221,6 +218,8 @@ public class newdonor extends AppCompatActivity {
 
             } else if (weightValue < 50) {
                 showDialog("Your weight should be more than 50 Kg");
+            } else if (selectedDiseaseId == R.id.register_yes) {
+                showDialog("Sorry, you can not donate while you have a diseases");
             } else {
                 takeData();
             }

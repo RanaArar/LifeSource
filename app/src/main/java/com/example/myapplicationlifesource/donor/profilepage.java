@@ -1,4 +1,4 @@
-package com.example.myapplicationlifesource;
+package com.example.myapplicationlifesource.donor;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplicationlifesource.JavaMail.SendMailAsyncTask;
+import com.example.myapplicationlifesource.Notificationpage;
+import com.example.myapplicationlifesource.R;
+import com.example.myapplicationlifesource.User;
+import com.example.myapplicationlifesource.newdonor;
+import com.example.myapplicationlifesource.signinpage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;

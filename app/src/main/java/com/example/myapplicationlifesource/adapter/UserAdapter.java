@@ -1,4 +1,4 @@
-package com.example.myapplicationlifesource;
+package com.example.myapplicationlifesource.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,9 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.myapplicationlifesource.R;
+import com.example.myapplicationlifesource.User;
+
 import java.util.List;
 
-public class UserAdapter extends ArrayAdapter<User> {
+public class UserAdapter extends ArrayAdapter<com.example.myapplicationlifesource.User> {
     private List<User> list;
 
     private View v;
