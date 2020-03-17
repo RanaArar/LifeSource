@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".Donorslist">
+    tools:context=".admin.Donorslist">
 
 
     <include layout="@layout/custom_tool_bar" />
@@ -25,6 +25,7 @@
         android:layout_height="51dp"
         android:background="@drawable/button"
         android:text="Log out"
+        android:textAllCaps="false"
         android:textColor="@color/colorAccent"
         android:layout_margin="5dp" />
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".editprofile">
+    tools:context=".donor.editprofile">
 
     <include layout="@layout/custom_tool_bar" />
 
@@ -25,7 +25,7 @@
 
     <EditText
         android:id="@+id/edit_email"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -40,19 +40,19 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="5dp"
-        android:text="Old password"
+        android:text="Current password"
         android:textColor="#A22F48"
         android:textSize="19sp"
         android:textStyle="bold" />
 
     <EditText
         android:id="@+id/edi_pass"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="5dp"
-        android:hint="Enter your old password"
+        android:hint="Enter your current password"
         android:inputType="textPassword" />
 
     <TextView
@@ -69,12 +69,12 @@
 
     <EditText
         android:id="@+id/edit_new_pass"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="5dp"
-        android:hint="Change your password"
+        android:hint="New password"
         android:inputType="textPassword" />
 
 
@@ -84,7 +84,8 @@
         android:layout_height="51dp"
 
         android:background="@drawable/button"
-        android:text="save"
+        android:text="Save"
+        android:textAllCaps="false"
         android:textColor="#fff"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"

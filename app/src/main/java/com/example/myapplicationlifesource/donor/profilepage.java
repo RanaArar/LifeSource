@@ -65,7 +65,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_profilepage);
         //---------------------------------------------
         editInfo = findViewById(R.id.edit_info);
-        notification = findViewById(R.id.user_notification);
+        //   notification = findViewById(R.id.user_notification);
         amalHospital = findViewById(R.id.amal_hospital);
         nabdHospital = findViewById(R.id.nabd_hospital);
         hashimiHosiptal = findViewById(R.id.hashimi_hospital);
@@ -88,7 +88,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         //-------------------------Listeners---------------------------------------
         editInfo.setOnClickListener(this);
         calnder.setOnClickListener(this);
-        notification.setOnClickListener(this);
+//        notification.setOnClickListener(this);
         getAppointment.setOnClickListener(this);
         amalLocation.setOnClickListener(this);
         nabdLocation.setOnClickListener(this);
@@ -169,9 +169,9 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
             case R.id.edit_info:
                 startActivity(new Intent(profilepage.this, newdonor.class));
                 break;
-            case R.id.user_notification:
+       /*     case R.id.user_notification:
                 startActivity(new Intent(profilepage.this, Notificationpage.class));
-                break;
+                break;*/
             case R.id.donate_layout:
                 SendingEmail();
                 break;
@@ -225,8 +225,8 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         //TODO: set random time and message
         int random = new Random().nextInt();
         String title = "Confirm of appointment";
-        String content = "Dear donor , \n this is a confirmation of your appointment at " + random + "in " + user.getHospital() + "\n Wash you all the best";
-        new SendMailAsyncTask(profilepage.this, "mmsaj000@hotmail.com", title, content).execute();
+        String content = "Dear donor , \n \nthis is a confirmation of your appointment at " + random + "in " + user.getHospital() + "\n \n Donate blood ,\n Donate Love";
+        new SendMailAsyncTask(profilepage.this, "s101501512@aou.edu.sa", title, content).execute();
         Toast.makeText(this, "email " + sentToEmail, Toast.LENGTH_SHORT).show();
         Toasty.info(profilepage.this, "email was sent");
 

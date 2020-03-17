@@ -52,7 +52,7 @@ public class Donorsinfo extends AppCompatActivity {
 
     Intent intent;
     String user;
-
+    String needType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -161,11 +161,13 @@ public class Donorsinfo extends AppCompatActivity {
             }
 
         }).start();*/
+
+        needType = intent.getStringExtra("bloodType");
         String title = "We need you, LIFE SAVER";
-        String content = "Dear donor , \n \n we need your help for some blood \n  \n This is the good time for some charity" +
+        String content = "Dear donor , \n \n the hospital need " + needType +
                 "\n\n do not miss that :) ";
 //intent.getStringExtra("email")
-        new SendMailAsyncTask(Donorsinfo.this, "mmsaj000@hotmail.com", title, content).execute();
+        new SendMailAsyncTask(Donorsinfo.this, "s101501512@aou.edu.sa", title, content).execute();
 
 // todo: use the same fun of sending mail
         //--------------notification--------------
@@ -207,7 +209,7 @@ public class Donorsinfo extends AppCompatActivity {
                                 + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
 
                                 + "\"data\": {\"foo\": \"bar\"},"
-                                + "\"contents\": {\"en\": \"WE HAVE A NEED FOR YOUR BLOOD, PLEASE COME !!\"}"
+                                + "\"contents\": {\"en\": \"WE HAVE A NEED FOR YOUR BLOOD " + needType + " , PLEASE COME !!\"}"
                                 + "}";
 
 

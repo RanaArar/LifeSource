@@ -3,7 +3,7 @@
     <string name="title_activity_gpspage">Map</string>
     <string name="mobile_number">mobile number</string>
     <string name="e_mail">E-mail</string>
-    <string name="change_password">Change password</string>
+    <string name="change_password">New password</string>
     <string-array name="bloodGrouo">
 
         <item>A+</item>

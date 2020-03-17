@@ -224,9 +224,9 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
-
+            android:textAllCaps="false"
             android:background="@drawable/button"
-            android:text="call"
+            android:text="Call"
             android:textColor="#fff" />
 
 

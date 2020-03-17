@@ -7,7 +7,7 @@
     android:background="@drawable/background"
     android:orientation="vertical"
     android:theme="@style/AppTheme1"
-    tools:context=".profilepage">
+    tools:context=".donor.profilepage">
 
 
     <LinearLayout
@@ -40,27 +40,27 @@
 
         <ImageView
             android:id="@+id/donoing"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/cou"
             tools:layout_editor_absoluteX="262dp"
             tools:layout_editor_absoluteY="98dp" />
 
         <Button
             android:id="@+id/edit_info"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/setting"
             tools:layout_editor_absoluteX="335dp"
             tools:layout_editor_absoluteY="98dp" />
 
-        <Button
-            android:id="@+id/user_notification"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/notificon"
-            tools:layout_editor_absoluteX="194dp"
-            tools:layout_editor_absoluteY="93dp" />
+        <!--      <Button
+                  android:id="@+id/user_notification"
+                  android:layout_width="70dp"
+                  android:layout_height="70dp"
+                  android:background="@drawable/notificon"
+                  tools:layout_editor_absoluteX="194dp"
+                  tools:layout_editor_absoluteY="93dp" />-->
 
     </LinearLayout>
 
@@ -194,11 +194,10 @@
         android:layout_height="80dp"
         android:padding="10dp"
         android:layout_below="@id/donate_now"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
+
+
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+
 
         android:orientation="horizontal">
 
@@ -213,6 +212,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_gravity="center"
             android:background="#D7E1F2"
             android:text="Get an Appointment"
             android:textAllCaps="false"

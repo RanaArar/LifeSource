@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background"
-    tools:context=".adminpage">
+    tools:context=".admin.adminpage">
 
     <include layout="@layout/custom_tool_bar" />
     <TextView
