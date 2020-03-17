@@ -15,27 +15,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.myapplicationlifesource.JavaMail.Config;
-import com.example.myapplicationlifesource.JavaMail.GMailSender;
+
 import com.example.myapplicationlifesource.JavaMail.SendMailAsyncTask;
 import com.example.myapplicationlifesource.R;
-import com.example.myapplicationlifesource.donor.profilepage;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.onesignal.OneSignal;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Scanner;
 
 import es.dmoral.toasty.Toasty;
@@ -146,30 +136,14 @@ public class Donorsinfo extends AppCompatActivity {
 
         //--------------send email -------------
 
-/*        new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    GMailSender sender = new GMailSender("nolemohd.000@gmail.com","NoLe6814302**");  // password is your email password
-                    sender.sendMail("Email Title ", " Email Body ","mmsaj00000@gmail.com","mmsaj000@hotmail.com");
-                }
-                catch (Exception e)
-                {
-                    Log.e("SendMail", e.getMessage(), e);
-                }
-            }
-
-        }).start();*/
 
         needType = intent.getStringExtra("bloodType");
         String title = "We need you, LIFE SAVER";
-        String content = "Dear donor , \n \n the hospital need " + needType +
-                "\n\n do not miss that :) ";
-//intent.getStringExtra("email")
-        new SendMailAsyncTask(Donorsinfo.this, "s101501512@aou.edu.sa", title, content).execute();
+        String content = "Dear donor , \n \n the hospital need certain amount of blood type" + needType +
+                "\n\n you can save lives by coming to the hospital to donate your blood at this time.\n\n Regards";
+        new SendMailAsyncTask(Donorsinfo.this, "rana997.ra@gmail.com", title, content).execute();
 
-// todo: use the same fun of sending mail
+
         //--------------notification--------------
 
         sendNotification();

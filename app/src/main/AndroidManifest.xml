@@ -28,7 +28,6 @@
             android:parentActivityName=".MainActivity" />
         <activity android:name=".admin.Donorsinfo" />
         <activity android:name=".donor.editprofile" />
-        <activity android:name=".Notificationpage" />
         <activity android:name=".donor.RegisterActivity" />
         <activity
             android:name=".donor.profilepage"

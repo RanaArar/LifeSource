@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplicationlifesource.JavaMail.SendMailAsyncTask;
-import com.example.myapplicationlifesource.Notificationpage;
 import com.example.myapplicationlifesource.R;
 import com.example.myapplicationlifesource.User;
 import com.example.myapplicationlifesource.newdonor;
@@ -239,6 +238,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
      *                                                  *
      *--------------------------------------------------*/
     private void selectedHospital(TextView t, TextView otherText, TextView otherText1) {
+        //todo:new hospitals names and location
         otherText.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         otherText1.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         t.setBackgroundColor(getResources().getColor(R.color.colorAccent));
