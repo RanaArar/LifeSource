@@ -33,9 +33,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 import es.dmoral.toasty.Toasty;
+
+import static com.example.myapplicationlifesource.JavaMail.Config.sentToEmail;
 
 public class profilepage extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
@@ -47,7 +52,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
     private Button editInfo, notification,
             getAppointment;
 
-    private static String sentToEmail;
+
     private ImageView doning,
             amalLocation, nabdLocation, hashimiLocation;
     private TextView name, amalHospital, nabdHospital, hashimiHosiptal;
@@ -108,7 +113,6 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
                     if (data.exists()) {
                         user = dataSnapshot.getValue(User.class);
                         name.setText(user.getName());
-                        sentToEmail = user.getEmail();
 
                     } else {
                         Toasty.error(profilepage.this, "No data for the user");
@@ -221,11 +225,12 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
      *--------------------------------------------------*/
     private void SendingEmail() {
 
-        //TODO: set random time and message
-        int random = new Random().nextInt();
+        Date date = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        String formattedDate = df.format(date);
         String title = "Confirm of appointment";
-        String content = "Dear donor , \n \nthis is a confirmation of your appointment at " + random + "in " + user.getHospital() + "\n \n Donate blood ,\n Donate Love";
-        new SendMailAsyncTask(profilepage.this, "s101501512@aou.edu.sa", title, content).execute();
+        String content = "Dear donor , \n \nthis is a confirmation of your appointment at " + formattedDate + "in " + user.getHospital() + "\n \n Donate blood ,\n Donate Love";
+        new SendMailAsyncTask(profilepage.this, sentToEmail, title, content).execute();
         Toast.makeText(this, "email " + sentToEmail, Toast.LENGTH_SHORT).show();
         Toasty.info(profilepage.this, "email was sent");
 

@@ -1,7 +1,9 @@
 package com.example.myapplicationlifesource.JavaMail;
 
-// todo: create new email to the admin
+// todo: allow sending mail in Hotmail
 public class Config {
-    public static String EMAIL = "rana997.ra@gmail.com";
-    public static String PASSWORD = "0538113397";
+    public static String EMAIL = "lifesaverproject@hotmail.com";
+    public static String PASSWORD = "lifesaver1234@";
+    public static final String sentToEmail = "mmsaj000@hotmail.com";//"rana997.ra@gmail.com";
+
 }
