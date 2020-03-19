@@ -30,6 +30,8 @@ import java.util.Scanner;
 
 import es.dmoral.toasty.Toasty;
 
+import static com.example.myapplicationlifesource.JavaMail.Config.sentToEmail;
+
 public class Donorsinfo extends AppCompatActivity {
 
     private TextView name, age, phone, email, disease, weight;
@@ -139,9 +141,10 @@ public class Donorsinfo extends AppCompatActivity {
 
         needType = intent.getStringExtra("bloodType");
         String title = "We need you, LIFE SAVER";
-        String content = "Dear donor , \n \n the hospital need certain amount of blood type" + needType +
-                "\n\n you can save lives by coming to the hospital to donate your blood at this time.\n\n Regards";
-        new SendMailAsyncTask(Donorsinfo.this, "rana997.ra@gmail.com", title, content).execute();
+        String content = "Dear donor , \n \n the hospital need certain amount of blood type (" + needType +
+                ")\n\n you can save lives by coming to the hospital to donate your blood at this time.\n\n Regards" +
+                "\n\n  Life Saver team";
+        new SendMailAsyncTask(Donorsinfo.this, sentToEmail, title, content).execute();
 
 
         //--------------notification--------------

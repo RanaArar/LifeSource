@@ -231,8 +231,6 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         String title = "Confirm of appointment";
         String content = "Dear donor , \n \nthis is a confirmation of your appointment at " + formattedDate + "in " + user.getHospital() + "\n \n Donate blood ,\n Donate Love";
         new SendMailAsyncTask(profilepage.this, sentToEmail, title, content).execute();
-        Toast.makeText(this, "email " + sentToEmail, Toast.LENGTH_SHORT).show();
-        Toasty.info(profilepage.this, "email was sent");
 
     }
 
