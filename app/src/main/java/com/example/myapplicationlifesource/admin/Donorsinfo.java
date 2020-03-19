@@ -164,7 +164,7 @@ public class Donorsinfo extends AppCompatActivity {
                     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                             .permitAll().build();
                     StrictMode.setThreadPolicy(policy);
-                    String send_email = intent.getStringExtra("email");
+                    String send_email = sentToEmail;
 
 
                     try {

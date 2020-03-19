@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         SignIn =(Button) findViewById(R.id.sign_in);
         newDonor = (Button) findViewById(R.id.new_donor);
 
+        // listener for buttons
 
         adminPage.setOnClickListener(this);
         SignIn.setOnClickListener(this);

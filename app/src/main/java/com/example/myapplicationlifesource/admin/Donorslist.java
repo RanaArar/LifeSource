@@ -17,9 +17,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.myapplicationlifesource.MainActivity;
 import com.example.myapplicationlifesource.R;
-import com.example.myapplicationlifesource.User;
 import com.example.myapplicationlifesource.adapter.UserAdapter;
 import com.example.myapplicationlifesource.admin.Donorsinfo;
+import com.example.myapplicationlifesource.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -54,11 +54,13 @@ public class Donorslist extends AppCompatActivity {
         toolbar.setTitle("");
         toolbarText.setText("Donors");
         logout = findViewById(R.id.logout_admin);
+        //-----database--------
         mAuth = FirebaseAuth.getInstance();
 
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("User");
         user = new User();
+        //------list-----
         listView = findViewById(R.id.list);
         arrayList = new ArrayList<>();
         userAdapter = new UserAdapter(Donorslist.this, R.layout.list_item, arrayList);
@@ -73,6 +75,7 @@ public class Donorslist extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //-----retrieve from data base-----
         databaseReference.child("Donor").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -92,7 +95,7 @@ public class Donorslist extends AppCompatActivity {
 
             }
         });
-
+//---if user click ------
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

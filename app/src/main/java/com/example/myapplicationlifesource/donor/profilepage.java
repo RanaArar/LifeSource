@@ -172,7 +172,6 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.donoing:
-                Toast.makeText(this, "Number of donation:" + count, Toast.LENGTH_SHORT).show();
                 donateTime();
                 break;
             case R.id.edit_info:
@@ -240,7 +239,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
      *                                                  *
      *--------------------------------------------------*/
     private void SendingEmail() {
-
+//--take date ----
         Calendar date = Calendar.getInstance();
         date.add(Calendar.DAY_OF_YEAR, 1);
         date.add(Calendar.HOUR_OF_DAY, 1);
@@ -268,6 +267,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         user.setHospital(selectedHospital);
         donateTimes.add(selectedHospital);
         user.setHospitals(donateTimes);
+        ///store in database
         databaseReference.child("Donor").child(userId).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

@@ -12,11 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.myapplicationlifesource.R;
-import com.example.myapplicationlifesource.User;
+import com.example.myapplicationlifesource.model.User;
 
 import java.util.List;
 
-public class UserAdapter extends ArrayAdapter<com.example.myapplicationlifesource.User> {
+public class UserAdapter extends ArrayAdapter<com.example.myapplicationlifesource.model.User> {
     private List<User> list;
 
     private View v;

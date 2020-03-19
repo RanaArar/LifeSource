@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplicationlifesource.donor.profilepage;
+import com.example.myapplicationlifesource.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,8 +48,8 @@ public class newdonor extends AppCompatActivity {
 
     private EditText name, age, weight, phone, email;
     private Spinner bloodType;
+    User user;
     private String userId;
-    private com.example.myapplicationlifesource.User user;
     private DatabaseReference databaseReference;
     private FirebaseDatabase database;
     private FirebaseAuth mAuth;
@@ -103,7 +104,7 @@ public class newdonor extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        user = new com.example.myapplicationlifesource.User();
+        user = new User();
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("User");
         final FirebaseUser userKey = mAuth.getCurrentUser();
@@ -143,7 +144,7 @@ public class newdonor extends AppCompatActivity {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
 
                     if (data.exists()) {
-                        user = dataSnapshot.getValue(com.example.myapplicationlifesource.User.class);
+                        user = dataSnapshot.getValue(User.class);
                         retrieveValue();
                     } else {
                         Toast.makeText(newdonor.this, "No data for the user", Toast.LENGTH_LONG).show();
@@ -230,6 +231,7 @@ public class newdonor extends AppCompatActivity {
 
     }
 
+    ///----store in datatbase ------
     private void takeData() {
 
         switch (selectedGenderID){
@@ -275,6 +277,7 @@ public class newdonor extends AppCompatActivity {
         startActivity(new Intent(newdonor.this, profilepage.class));
     }
 
+    //-----dialog method------
     private void showDialog(String s) {
         final Dialog builder = new Dialog(newdonor.this);
         builder.setContentView(R.layout.dialog);

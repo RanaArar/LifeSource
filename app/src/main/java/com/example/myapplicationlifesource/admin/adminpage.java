@@ -57,6 +57,8 @@ public class adminpage extends AppCompatActivity {
                 startActivity(new Intent(adminpage.this, MainActivity.class));
             }
         });
+        //----sign in the admin
+
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,15 +77,15 @@ public class adminpage extends AppCompatActivity {
 
                                 } else {
                                     String errorMessage = task.getException().getMessage();
-                                    //  Toast.makeText(adminpage.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
-                                    Toasty.error(adminpage.this, "Error : " + errorMessage);
+                                    Toast.makeText(adminpage.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
+                                    // Toasty.error(adminpage.this, "Error : " + errorMessage);
 
                                 }
                             }
                         });
                     } else {
-                        //Toast.makeText(adminpage.this, "you are not an admin", Toast.LENGTH_LONG).show();
-                        Toasty.info(adminpage.this, "you are not an admin");
+                        Toast.makeText(adminpage.this, "you are not an admin", Toast.LENGTH_LONG).show();
+                        //  Toasty.info(adminpage.this, "you are not an admin");
                     }
                 }
 
