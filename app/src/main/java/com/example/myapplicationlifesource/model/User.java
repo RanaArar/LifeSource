@@ -1,17 +1,26 @@
-package com.example.myapplicationlifesource;
+package com.example.myapplicationlifesource.model;
 
 import android.widget.EditText;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class User {
     String name, email, phone, bloodType, gender, diseases, hospital;
-
+    ArrayList<String> hospitals;
     Date appointment;
     int age;
+
+    public ArrayList<String> getHospitals() {
+        return hospitals;
+    }
+
+    public void setHospitals(ArrayList<String> hospitals) {
+        this.hospitals = hospitals;
+    }
 
     public int getDonateTime() {
         return donateTime;

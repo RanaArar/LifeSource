@@ -123,19 +123,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         double lat = intent.getDoubleExtra("lat", 0);
         double lag = intent.getDoubleExtra("long", 0);
         String title = intent.getStringExtra("title");
-  /*      if (amalBoolean)
-        {
-            lag= 39.174125;
-            lat=21.513575;
-        }else if (nabdBoolean){
-            lat= 21.543346;
-            lag = 39.166610;
-        }else if (hashimiBoolean){
 
-            lat = 21.505549;
-            lag=39.166208;
-        }
-*/
         googleMap.setMinZoomPreference(12);
         googleMap.setIndoorEnabled(true);
         UiSettings uiSettings = googleMap.getUiSettings();

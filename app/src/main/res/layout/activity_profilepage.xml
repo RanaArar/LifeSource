@@ -108,7 +108,7 @@
                 android:drawableLeft="@drawable/hospital_drawable"
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical"
-                android:text="United Doctors Hospital"
+                android:text="Al Hammadi Hospital"
                 android:textStyle="bold" />
 
             <ImageView
@@ -135,7 +135,7 @@
                 android:drawableLeft="@drawable/hospital_drawable"
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical"
-                android:text="International Medical Center"
+                android:text="King Fahad Medical City"
                 android:textStyle="bold" />
 
             <ImageView
@@ -161,7 +161,7 @@
                 android:drawableLeft="@drawable/hospital_drawable"
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical"
-                android:text="King Fahad General Hospital"
+                android:text="Dallah Hospitals "
                 android:textStyle="bold" />
 
             <ImageView

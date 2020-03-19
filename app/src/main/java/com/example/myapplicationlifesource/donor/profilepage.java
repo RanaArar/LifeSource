@@ -2,7 +2,9 @@ package com.example.myapplicationlifesource.donor;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -11,15 +13,17 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplicationlifesource.JavaMail.SendMailAsyncTask;
 import com.example.myapplicationlifesource.R;
-import com.example.myapplicationlifesource.User;
+import com.example.myapplicationlifesource.model.User;
 import com.example.myapplicationlifesource.newdonor;
 import com.example.myapplicationlifesource.signinpage;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,9 +38,9 @@ import com.google.firebase.database.ValueEventListener;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Random;
 
 import es.dmoral.toasty.Toasty;
 
@@ -49,7 +53,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
     private User user;
     private String userId;
     //------------------------------------
-    private Button editInfo, notification,
+    private Button editInfo,
             getAppointment;
 
 
@@ -59,6 +63,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
 
     private LinearLayout calnder;
     private int count = 0;
+    private ArrayList<String> donateTimes;
     //--------------------------------------------
 
 
@@ -88,7 +93,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         final FirebaseUser userKey = mAuth.getCurrentUser();
         userId = userKey.getUid();
         //------------------------------------------------------------------
-
+        donateTimes = new ArrayList<>();
         //-------------------------Listeners---------------------------------------
         editInfo.setOnClickListener(this);
         calnder.setOnClickListener(this);
@@ -113,6 +118,8 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
                     if (data.exists()) {
                         user = dataSnapshot.getValue(User.class);
                         name.setText(user.getName());
+                        if (!user.getHospitals().equals(null))
+                            donateTimes = user.getHospitals();
 
                     } else {
                         Toasty.error(profilepage.this, "No data for the user");
@@ -142,7 +149,6 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
         switch (item.getItemId()) {
             case R.id.log_out:
                 mAuth.signOut();
@@ -166,20 +172,17 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.donoing:
-                // Toast.makeText(this, "Number of donation:" + count, Toast.LENGTH_SHORT).show();
-                Toasty.info(this, "Number of donation:" + count);
+                Toast.makeText(this, "Number of donation:" + count, Toast.LENGTH_SHORT).show();
+                donateTime();
                 break;
             case R.id.edit_info:
                 startActivity(new Intent(profilepage.this, newdonor.class));
                 break;
-       /*     case R.id.user_notification:
-                startActivity(new Intent(profilepage.this, Notificationpage.class));
-                break;*/
+
             case R.id.donate_layout:
                 SendingEmail();
                 break;
             case R.id.amal_hospital:
-                //  selectHospitalBoolean(amalHospital, amalBoolean, nabdBoolean, hashimiBoolean);
                 selectedHospital(amalHospital, nabdHospital, hashimiHosiptal);
                 break;
             case R.id.nabd_hospital:
@@ -190,19 +193,32 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
                 break;
 
             case R.id.amal_location:
-                // showMapDialog(savedInstanceState1);
-                sendToLocation("International Medical Center", 21.513575, 39.174125);
+                sendToLocation("King Fahad Medical City - KFMC", 24.686323, 46.704937);
                 break;
             case R.id.nabd_location:
-                //   showMapDialog(savedInstanceState1);
-                sendToLocation("King Fahad General Hospital", 21.543346, 39.166610);
+                sendToLocation("Dallah Hospitals - Alnakheel", 24.748192, 46.652106);
                 break;
             case R.id.hashmi_location:
-                // showMapDialog(savedInstanceState1);
 
-                sendToLocation("United Doctors Hospital", 21.505549, 39.166208);
+                sendToLocation("Al Hammadi Hospital Al Olaya", 24.710375, 46.681370);
                 break;
         }
+    }
+
+    /* -------------------------------------------------*
+     *                                                  *
+     *         show donating dialog Function            *
+     *                                                  *
+     *--------------------------------------------------*/
+    private void donateTime() {
+        Dialog donating = new Dialog(profilepage.this);
+        donating.setContentView(R.layout.donating_layout);
+        ListView recyclerView = donating.findViewById(R.id.recycler_view);
+        TextView counting = donating.findViewById(R.id.donating_time);
+        counting.setText("Number of donation:" + donateTimes.size());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(profilepage.this, R.layout.hospital_name, R.id.hos_name, donateTimes);
+        recyclerView.setAdapter(adapter);
+        donating.show();
     }
 
     /* -------------------------------------------------*
@@ -225,12 +241,16 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
      *--------------------------------------------------*/
     private void SendingEmail() {
 
-        Date date = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-        String formattedDate = df.format(date);
+        Calendar date = Calendar.getInstance();
+        date.add(Calendar.DAY_OF_YEAR, 1);
+        date.add(Calendar.HOUR_OF_DAY, 1);
+        Date tomorrow = date.getTime();
+        SimpleDateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
+        String formattedDate = df.format(tomorrow);
         String title = "Confirm of appointment";
-        String content = "Dear donor , \n \nthis is a confirmation of your appointment at " + formattedDate + "in " + user.getHospital() + "\n \n Donate blood ,\n Donate Love";
+        String content = "Dear donor " + user.getName() + ", \n \nthis is a confirmation of your appointment at " + formattedDate + " in " + user.getHospital() + "\n \n Donate blood ,\n Donate Love";
         new SendMailAsyncTask(profilepage.this, sentToEmail, title, content).execute();
+        count++;
 
     }
 
@@ -241,21 +261,22 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
      *                                                  *
      *--------------------------------------------------*/
     private void selectedHospital(TextView t, TextView otherText, TextView otherText1) {
-        //todo:new hospitals names and location
         otherText.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         otherText1.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         t.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         final String selectedHospital = t.getText().toString();
         user.setHospital(selectedHospital);
+        donateTimes.add(selectedHospital);
+        user.setHospitals(donateTimes);
         databaseReference.child("Donor").child(userId).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    //   Toast.makeText(profilepage.this, selectedHospital + " is stored ", Toast.LENGTH_LONG).show();
-                    Toasty.success(profilepage.this, selectedHospital + " is stored ");
+                    Toast.makeText(profilepage.this, selectedHospital + " is stored ", Toast.LENGTH_LONG).show();
+                    //  Toasty.success(profilepage.this, selectedHospital + " is stored ");
                 } else {
-                    //Toast.makeText(profilepage.this, "Failed ", Toast.LENGTH_LONG).show();
-                    Toasty.error(profilepage.this, "Failed ");
+                    Toast.makeText(profilepage.this, "Failed ", Toast.LENGTH_LONG).show();
+                    // Toasty.error(profilepage.this, "Failed ");
                 }
 
 

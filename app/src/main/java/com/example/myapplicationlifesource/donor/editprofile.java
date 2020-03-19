@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,17 +40,25 @@ public class editprofile extends AppCompatActivity {
     private Button save;
     private Toolbar toolbar;
     private TextView toolbarText;
-
+    private ImageView back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editprofile);
-
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbarText = findViewById(R.id.toolbar_title);
 
         toolbar.setTitle("");
         toolbarText.setText("Change Password");
+        back = findViewById(R.id.back);
+        back.setImageResource(R.drawable.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(editprofile.this, profilepage.class));
+            }
+        });
         //------------------------Database---------------------------------------
 
         mAuth = FirebaseAuth.getInstance();
