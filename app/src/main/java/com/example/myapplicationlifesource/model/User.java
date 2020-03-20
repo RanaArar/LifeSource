@@ -10,17 +10,10 @@ import java.util.Date;
 
 public class User {
     String name, email, phone, bloodType, gender, diseases, hospital;
-    ArrayList<String> hospitals;
     Date appointment;
     int age;
 
-    public ArrayList<String> getHospitals() {
-        return hospitals;
-    }
 
-    public void setHospitals(ArrayList<String> hospitals) {
-        this.hospitals = hospitals;
-    }
 
     public int getDonateTime() {
         return donateTime;

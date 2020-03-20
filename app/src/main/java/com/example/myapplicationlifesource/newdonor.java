@@ -44,6 +44,8 @@ import java.util.zip.Inflater;
 
 import es.dmoral.toasty.Toasty;
 
+import static com.example.myapplicationlifesource.JavaMail.Config.sentToEmail;
+
 public class newdonor extends AppCompatActivity {
 
     private EditText name, age, weight, phone, email;
@@ -215,11 +217,15 @@ public class newdonor extends AppCompatActivity {
             if (ageValue > 65 || ageValue < 18) {
 
                 showDialog("Your age should be from 18-65");
-
+                progressBar.setVisibility(View.INVISIBLE);
 
             } else if (weightValue < 50) {
                 showDialog("Your weight should be more than 50 Kg");
-            } else if (selectedDiseaseId == R.id.register_yes) {
+                progressBar.setVisibility(View.INVISIBLE);
+
+            } else if (disease.getCheckedRadioButtonId() == R.id.register_yes) {
+                progressBar.setVisibility(View.INVISIBLE);
+
                 showDialog("Sorry, you can not donate while you have a diseases");
             } else {
                 takeData();
@@ -243,15 +249,9 @@ public class newdonor extends AppCompatActivity {
                 genderValue = "F";
                 break;
         }
-        switch (selectedDiseaseId){
-            case R.id.register_yes:
-                diseaseValue = "Yes";
-                break;
 
-            case R.id.register_no:
-                diseaseValue = "No";
-                break;
-        }
+                diseaseValue = "Yes";
+
 
         user.setName(name.getText().toString());
         user.setAge(Integer.valueOf(age.getText().toString()));
@@ -266,11 +266,11 @@ public class newdonor extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Toasty.success(newdonor.this, "Saved");
-                    OneSignal.sendTag("User_ID", user.getEmail());
+                    Toast.makeText(newdonor.this, "Saved", Toast.LENGTH_SHORT).show();
+                    OneSignal.sendTag("User_ID", sentToEmail);
 
                 } else {
-                    Toasty.error(newdonor.this, "Failed");
+                    Toast.makeText(newdonor.this, "Failed", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.myapplicationlifesource.JavaMail.SendMailAsyncTask;
 import com.example.myapplicationlifesource.R;
+import com.example.myapplicationlifesource.model.Hospitals;
 import com.example.myapplicationlifesource.model.User;
 import com.example.myapplicationlifesource.newdonor;
 import com.example.myapplicationlifesource.signinpage;
@@ -51,6 +52,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
     private DatabaseReference databaseReference;
     private FirebaseDatabase database;
     private User user;
+    private Hospitals hospitals;
     private String userId;
     //------------------------------------
     private Button editInfo,
@@ -62,7 +64,6 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
     private TextView name, amalHospital, nabdHospital, hashimiHosiptal;
 
     private LinearLayout calnder;
-    private int count = 0;
     private ArrayList<String> donateTimes;
     //--------------------------------------------
 
@@ -70,11 +71,9 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // savedInstanceState1 = savedInstanceState;
         setContentView(R.layout.activity_profilepage);
         //---------------------------------------------
         editInfo = findViewById(R.id.edit_info);
-        //   notification = findViewById(R.id.user_notification);
         amalHospital = findViewById(R.id.amal_hospital);
         nabdHospital = findViewById(R.id.nabd_hospital);
         hashimiHosiptal = findViewById(R.id.hashimi_hospital);
@@ -87,6 +86,7 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         hashimiLocation = findViewById(R.id.hashmi_location);
         ///---------------database----------------------------
         user = new User();
+        hospitals = new Hospitals();
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("User");
@@ -118,11 +118,10 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
                     if (data.exists()) {
                         user = dataSnapshot.getValue(User.class);
                         name.setText(user.getName());
-                        if (!user.getHospitals().equals(null))
-                            donateTimes = user.getHospitals();
+
 
                     } else {
-                        Toasty.error(profilepage.this, "No data for the user");
+                        Toast.makeText(profilepage.this, "No data for the user", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -133,6 +132,25 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
             }
         });
 
+        databaseReference.child("Donor").child(userId).child("Hospitals").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+
+                    if (data.exists()) {
+                        hospitals = dataSnapshot.getValue(Hospitals.class);
+                        donateTimes = hospitals.getHospitalsArray();
+                    } else {
+                        Toast.makeText(profilepage.this, "No data for the user", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     /* -------------------------------------------------*
@@ -214,7 +232,9 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         donating.setContentView(R.layout.donating_layout);
         ListView recyclerView = donating.findViewById(R.id.recycler_view);
         TextView counting = donating.findViewById(R.id.donating_time);
+
         counting.setText("Number of donation:" + donateTimes.size());
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(profilepage.this, R.layout.hospital_name, R.id.hos_name, donateTimes);
         recyclerView.setAdapter(adapter);
         donating.show();
@@ -249,7 +269,6 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         String title = "Confirm of appointment";
         String content = "Dear donor " + user.getName() + ", \n \nthis is a confirmation of your appointment at " + formattedDate + " in " + user.getHospital() + "\n \n Donate blood ,\n Donate Love";
         new SendMailAsyncTask(profilepage.this, sentToEmail, title, content).execute();
-        count++;
 
     }
 
@@ -266,17 +285,29 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
         final String selectedHospital = t.getText().toString();
         user.setHospital(selectedHospital);
         donateTimes.add(selectedHospital);
-        user.setHospitals(donateTimes);
+        hospitals.setHospitalsArray(donateTimes);
+
         ///store in database
         databaseReference.child("Donor").child(userId).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+
+                databaseReference.child("Donor").child(userId).child("Hospitals").setValue(hospitals).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+
+                        } else {
+                            Toast.makeText(profilepage.this, "Failed ", Toast.LENGTH_LONG).show();
+                        }
+
+
+                    }
+                });
                 if (task.isSuccessful()) {
                     Toast.makeText(profilepage.this, selectedHospital + " is stored ", Toast.LENGTH_LONG).show();
-                    //  Toasty.success(profilepage.this, selectedHospital + " is stored ");
                 } else {
                     Toast.makeText(profilepage.this, "Failed ", Toast.LENGTH_LONG).show();
-                    // Toasty.error(profilepage.this, "Failed ");
                 }
 
 
