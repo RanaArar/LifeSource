@@ -80,11 +80,11 @@ public class Donorslist extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-
-                    user = data.getValue(User.class);
-                    userAdapter.addElement(user);
-
-
+                    if (data.exists()) {
+                        user = data.getValue(User.class);
+                        userAdapter.addElement(user);
+                        // arrayList.add(user);
+                    }
                 }
                 listView.setAdapter(userAdapter);
                 userAdapter.notifyDataSetChanged();

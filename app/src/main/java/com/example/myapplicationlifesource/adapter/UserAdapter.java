@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,35 +38,41 @@ public class UserAdapter extends ArrayAdapter<com.example.myapplicationlifesourc
         TextView name = v.findViewById(R.id.item_text);
         ImageView bloodTye = v.findViewById(R.id.item_blood);
 
-        name.setText(list.get(position).getName());
+        if (list.size() != 0) {
+            name.setText(list.get(position).getName());
 
 
-        switch (list.get(position).getBloodType()) {
-            case "AB-":
-                bloodTye.setImageResource(R.drawable.bloodab);
-                break;
-            case "AB+":
-                bloodTye.setImageResource(R.drawable.bloodabplus);
-                break;
-            case "A":
-                bloodTye.setImageResource(R.drawable.bloodaplus);
-                break;
-            case "A-":
-                bloodTye.setImageResource(R.drawable.blooda);
-                break;
-            case "B+":
-                bloodTye.setImageResource(R.drawable.bloodbplus);
-                break;
-            case "B-":
-                bloodTye.setImageResource(R.drawable.bloodb);
-                break;
-            case "O-":
-                bloodTye.setImageResource(R.drawable.bloodo);
-                break;
-            case "O+":
-                bloodTye.setImageResource(R.drawable.bloodoplus);
-                break;
+            try {
+                switch (list.get(position).getBloodType()) {
+                    case "AB-":
+                        bloodTye.setImageResource(R.drawable.bloodab);
+                        break;
+                    case "AB+":
+                        bloodTye.setImageResource(R.drawable.bloodabplus);
+                        break;
+                    case "A":
+                        bloodTye.setImageResource(R.drawable.bloodaplus);
+                        break;
+                    case "A-":
+                        bloodTye.setImageResource(R.drawable.blooda);
+                        break;
+                    case "B+":
+                        bloodTye.setImageResource(R.drawable.bloodbplus);
+                        break;
+                    case "B-":
+                        bloodTye.setImageResource(R.drawable.bloodb);
+                        break;
+                    case "O-":
+                        bloodTye.setImageResource(R.drawable.bloodo);
+                        break;
+                    case "O+":
+                        bloodTye.setImageResource(R.drawable.bloodoplus);
+                        break;
 
+                }
+            } catch (RuntimeException e) {
+                Toast.makeText(getContext(), "error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
         return v;
     }

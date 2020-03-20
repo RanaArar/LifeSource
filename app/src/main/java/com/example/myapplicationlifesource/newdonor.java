@@ -75,6 +75,7 @@ public class newdonor extends AppCompatActivity {
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();
+        OneSignal.sendTag("User_ID", sentToEmail);
         //-------------------------------------------------------------------------
         name = findViewById(R.id.register_name);
         age = findViewById(R.id.register_age);
@@ -267,7 +268,6 @@ public class newdonor extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(newdonor.this, "Saved", Toast.LENGTH_SHORT).show();
-                    OneSignal.sendTag("User_ID", sentToEmail);
 
                 } else {
                     Toast.makeText(newdonor.this, "Failed", Toast.LENGTH_SHORT).show();

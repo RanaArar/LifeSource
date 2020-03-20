@@ -30,6 +30,7 @@ import java.util.Scanner;
 
 import es.dmoral.toasty.Toasty;
 
+import static com.example.myapplicationlifesource.JavaMail.Config.EMAIL;
 import static com.example.myapplicationlifesource.JavaMail.Config.sentToEmail;
 
 public class Donorsinfo extends AppCompatActivity {
@@ -58,7 +59,7 @@ public class Donorsinfo extends AppCompatActivity {
                 .init();
 
         user = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        OneSignal.sendTag("User_ID", user);
+        OneSignal.sendTag("User_ID", EMAIL);
         //--------------------------------------------
         name = findViewById(R.id.retreive_name);
         age = findViewById(R.id.retreive_age);
