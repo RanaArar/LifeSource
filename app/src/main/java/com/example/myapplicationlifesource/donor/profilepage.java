@@ -36,6 +36,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.onesignal.OneSignal;
 
 
 import java.text.SimpleDateFormat;
@@ -45,6 +46,7 @@ import java.util.Date;
 
 import es.dmoral.toasty.Toasty;
 
+import static com.example.myapplicationlifesource.JavaMail.Config.EMAIL;
 import static com.example.myapplicationlifesource.JavaMail.Config.sentToEmail;
 
 public class profilepage extends AppCompatActivity implements View.OnClickListener {
@@ -72,7 +74,14 @@ public class profilepage extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profilepage);
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
+
+        OneSignal.sendTag("User_ID", sentToEmail);
         //---------------------------------------------
+
         editInfo = findViewById(R.id.edit_info);
         amalHospital = findViewById(R.id.amal_hospital);
         nabdHospital = findViewById(R.id.nabd_hospital);
