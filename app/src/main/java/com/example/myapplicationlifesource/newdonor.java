@@ -86,14 +86,15 @@ public class newdonor extends AppCompatActivity {
         logout = findViewById(R.id.logout_donor);
         bloodType = findViewById(R.id.register_bloodtype);
         //---------------------RadioGroups-------------------------------------
+        disease = findViewById(R.id.register_disease);
 
         gender = findViewById(R.id.register_gender);
-        selectedGenderID = gender.getCheckedRadioButtonId();
-        selectedGender = (RadioButton) findViewById(selectedGenderID);
-
-        disease = findViewById(R.id.register_disease);
         selectedDiseaseId = disease.getCheckedRadioButtonId();
         selectedDisease = (RadioButton) findViewById(selectedDiseaseId);
+
+        selectedGenderID = gender.getCheckedRadioButtonId();
+        selectedGender = (RadioButton) findViewById(selectedGenderID);
+        genderValue = selectedGender.getText().toString();
         //-------------------------ProgressBar--------------------------------------
 
         progressBar = findViewById(R.id.new_donor_progressBar);
@@ -190,7 +191,7 @@ public class newdonor extends AppCompatActivity {
             phone.setText(user.getPhone());
             email.setText(user.getEmail());
 
-            if(user.getGender().equals("F"))
+        if (user.getGender().startsWith("F"))
                 gender.check(R.id.register_female);
             else
                 gender.check(R.id.register_male);
@@ -201,8 +202,11 @@ public class newdonor extends AppCompatActivity {
                 disease.check(R.id.register_no);
 
             for(int i =0 ; i< items.size(); i++){
-                if(items.contains(user.getBloodType()))
+
+                if (items.get(i).equals(user.getBloodType())) {
                     bloodType.setSelection(i);
+                    break;
+                }
                 else
                     bloodType.setSelection(0);
             }
@@ -241,17 +245,8 @@ public class newdonor extends AppCompatActivity {
     ///----store in datatbase ------
     private void takeData() {
 
-        switch (selectedGenderID){
-            case R.id.register_male:
-                genderValue = "M";
-                break;
 
-            case R.id.register_female:
-                genderValue = "F";
-                break;
-        }
-
-                diseaseValue = "Yes";
+        diseaseValue = "No";
 
 
         user.setName(name.getText().toString());
@@ -259,8 +254,8 @@ public class newdonor extends AppCompatActivity {
         user.setEmail(email.getText().toString());
         user.setPhone(phone.getText().toString());
         user.setWeight(Double.valueOf(weight.getText().toString()));
-        user.setGender(genderValue);
         user.setDiseases(diseaseValue);
+        user.setGender(genderValue);
         user.setBloodType(selectedBloodType);
 
         databaseReference.child("Donor").child(userId).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -294,6 +289,14 @@ public class newdonor extends AppCompatActivity {
         });
 
         builder.show();
+
+    }
+
+    public void check(View view) {
+
+        selectedGenderID = gender.getCheckedRadioButtonId();
+        selectedGender = (RadioButton) findViewById(selectedGenderID);
+        genderValue = selectedGender.getText().toString();
 
     }
 }

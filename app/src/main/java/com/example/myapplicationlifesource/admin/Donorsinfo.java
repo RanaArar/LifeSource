@@ -92,7 +92,7 @@ public class Donorsinfo extends AppCompatActivity {
 
         weight.setText(String.valueOf(intent.getDoubleExtra("weight", 0)));
 
-        if (intent.getStringExtra("gender").equals("F"))
+        if (intent.getStringExtra("gender").startsWith("F"))
             gender.setImageResource(R.drawable.female1);
         else
             gender.setImageResource(R.drawable.male1);

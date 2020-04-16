@@ -184,6 +184,8 @@
         android:layout_margin="5dp"
         android:text="Male"
         android:checked="true"
+        android:onClick="check"
+
         android:textStyle="bold" />
 
     <RadioButton
@@ -192,6 +194,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:text="Female"
+        android:onClick="check"
+
         android:textStyle="bold" />
 </RadioGroup>
     <TextView
